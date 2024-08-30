@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import { HoverEffectSertificate } from '../(components)/ui/card-hover-effect-sertificate';
-import imagekuswara from '@/public/assets/images/kuswara.jpg';
+import imagekuswara from '@/public/assets/images/user.jpg';
 import { Metadata } from 'next';
 import FetchCertificates from './fetchCertificate';
 

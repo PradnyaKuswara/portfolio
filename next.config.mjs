@@ -1,4 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    images: {
+        domains: [
+            'img.daisyui.com',
+            'landingfoliocom.imgix.net',
+            'localhost',
+            'localhost:5000',
+            'api.pradnyakuswara.cloud'
+        ],
+    },
+};
 
 export default nextConfig;

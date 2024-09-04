@@ -68,6 +68,11 @@ export const HoverEffectSertificate = ({
                         )}
                     </AnimatePresence>
                     <Card>
+                        <div className="flex justify-end gap-2">
+                            <div className="badge badge-primary p-2 text-xs badge-outline">
+                                {item.organization}
+                            </div>
+                        </div>
                         <CardTitle>{item.name}</CardTitle>
                         <CardDescription>
                             {limitdesc(item.description)}
@@ -108,11 +113,6 @@ export const CardTitle = ({
 }) => {
     return (
         <>
-            <div className="flex justify-end gap-2">
-                <div className="badge badge-primary p-2 text-xs badge-outline">
-                    Dicoding
-                </div>
-            </div>
             <h4 className={cn(' font-bold tracking-wide mt-2', className)}>
                 {children}
             </h4>

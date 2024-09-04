@@ -92,7 +92,7 @@ const HeroSection = () => {
                         <div className="flex flex-wrap gap-4 mt-2">
                             <BoxReveal boxColor={'#5046e6'} duration={0.5}>
                                 <Link
-                                    href="https://drive.google.com/file/d/1a2IGiPmyOB_-J_4gX2lxm09_kuK-sIUB/view"
+                                    href="https://drive.google.com/file/d/1wt_CXmcLNoT8sE2w1cX8xPtl-Sm6VVjX/view?usp=sharing"
                                     className="hover:text-primary"
                                 >
                                     <div className="flex gap-2 items-center">

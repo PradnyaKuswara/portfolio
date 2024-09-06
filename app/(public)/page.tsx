@@ -25,42 +25,6 @@ function HomePage() {
                         share with others.
                     </p>
                 </section>
-
-                {/* <section
-                    id="featured-projects"
-                    className="mt-20"
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                >
-                    <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent inline-block text-transparent bg-clip-text ">
-                        Featured Projects
-                    </h1>
-                    <HoverEffectProject items={projects} />
-                    <div className="flex justify-end">
-                        <Link href="" className="btn btn-sm btn-primary  ">
-                            <span>View All Projects</span>
-                            <ArrowRight></ArrowRight>
-                        </Link>
-                    </div>
-                </section>
-
-                <section
-                    id="newest-blogs"
-                    data-aos="fade-up"
-                    data-aos-delay="400"
-                    className="mt-20"
-                >
-                    <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent inline-block text-transparent bg-clip-text ">
-                        Newest Blogs
-                    </h1>
-                    <HoverEffectBlog items={projects} />
-                    <div className="flex justify-end">
-                        <Link href="" className="btn btn-sm btn-primary">
-                            View All Blogs
-                            <ArrowRight></ArrowRight>
-                        </Link>
-                    </div>
-                </section> */}
             </div>
         </>
     );

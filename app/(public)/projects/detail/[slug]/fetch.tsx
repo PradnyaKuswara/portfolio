@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { GitHub, Link2, User } from 'react-feather';
-import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView';
 
 type ProjectCategory = {
     id: bigint;
@@ -132,7 +131,9 @@ export default function FetchProjectDetail({ slug }: FetchProjectDetailProps) {
                         ) : null}
                     </div>
                     <div className="border-t mt-2"></div>
-                    <FroalaEditorView model={project.description} />
+                    {/* use dangerhtml */}
+                    <div dangerouslySetInnerHTML={{ __html: project.description }}></div>
+
                 </div>
             </section>
         </>

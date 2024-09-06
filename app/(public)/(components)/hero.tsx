@@ -1,12 +1,10 @@
-import { ArrowDown, FileText, GitHub, Linkedin } from 'react-feather';
-import { SparklesCore } from './ui/sparkles';
+import { FileText, GitHub, Linkedin } from 'react-feather';
 import { Button } from './ui/moving-border';
 import { useTheme } from '../theme-provider';
 import Link from 'next/link';
 import BoxReveal from './ui/box-reveal';
 import Marquee from './ui/marquee';
 import {
-    Aarch64Plain,
     AlpinejsOriginal,
     BootstrapOriginal,
     Css3Original,
@@ -22,7 +20,6 @@ const HeroSection = () => {
     const { theme } = useTheme();
 
     let backgroundColor = theme == 'light' ? '#FFFFFF' : '#00000';
-    let particleColor = theme == 'light' ? '#0667F1' : '#46BEF4';
 
     return (
         <>

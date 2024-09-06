@@ -4,10 +4,8 @@ import { showData } from '@/app/(protected)/utils/data';
 import Image from 'next/image';
 import React from 'react';
 import { Clock, Copy, Share } from 'react-feather';
-import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView';
 import toast from 'react-hot-toast';
 import readingDuration from 'reading-duration';
-import { notFound } from 'next/navigation';
 
 type Tag = {
     id: bigint;
@@ -150,9 +148,11 @@ export default function FetchArticleDetail({ slug }: FetchArticleDetailProps) {
                         </div>
                     </div>
                     <div className="flex flex-row mt-2 gap-2 border"></div>
-
-                    {/* render article content not using froala editor view*/}
-                    <FroalaEditorView model={article.content} />
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: article.content,
+                        }}
+                    ></div>
                 </div>
             </section>
         </>

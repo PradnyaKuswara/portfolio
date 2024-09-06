@@ -3,7 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import useAuthMiddleware from '@/app/(protected)/middleware/useAuthMiddleware';
-import Cookies from 'js-cookie'; // Impor js-cookie
+import Cookies from 'js-cookie'; 
 import toast from 'react-hot-toast';
 
 interface User {

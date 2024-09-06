@@ -4,12 +4,12 @@ import React from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { showData } from '../../utils/data';
-import 'froala-editor/css/froala_style.min.css';
-import 'froala-editor/css/froala_editor.pkgd.min.css';
-import 'froala-editor/js/plugins.pkgd.min.js';
 
-import FroalaEditorComponent from 'react-froala-wysiwyg';
 import toast from 'react-hot-toast';
+
+import dynamic from 'next/dynamic';
+
+const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
 
 type Field = {
     name: string;
@@ -32,48 +32,20 @@ const EditForm: React.FC<EditFormProps> = ({
     identifier,
     type,
 }) => {
-    const configEditor = {
-        placeholderText: 'Edit Your Content Here!',
-        imageAllowedTypes: ['jpeg', 'jpg', 'png'],
-        plainPaste: false,
-        height: '300',
-        width: '100%',
-        paragraphFormat: {
-            N: 'Normal',
-            heading1: 'Heading 1',
-            H2: 'Heading 2',
-        },
-        pluginsEnabled: [
-            'align',
-            'colors',
-            'image',
-            'video',
-            'imageManager',
-            'link',
-            'lists',
-            'paragraphFormat',
-            'quote',
-            'table',
-            'url',
-            'wordPaste',
-            'wordCounter',
-            'fullscreen',
-            'embedly',
-            'charCounter',
-            'codeView',
-            'codeBeautifier',
-            'getPDF',
-            'html',
-            'lineBreaker',
-            'inlineStyle',
-            'paragraphStyle',
-            'markdown',
-            'entities',
-            'quickInsert',
-            'fontSize',
-        ],
-        colorsBackground: ['REMOVE'],
-    };
+    const editor = React.useRef(null);
+    const [content, setContent] = React.useState('');
+
+    const config = React.useMemo(
+        () => ({
+            readonly: false,
+            placeholder: 'Start typings...',
+            uploader: {
+                insertImageAsBase64URI: true,
+            },
+            minHeight: '800',
+        }),
+        []
+    );
 
     const [formData, setFormData] = React.useState<{ [key: string]: any }>({});
     const [loading, setLoading] = React.useState<boolean>(true);
@@ -211,16 +183,17 @@ const EditForm: React.FC<EditFormProps> = ({
                             onChange={handleChange}
                         />
                     ) : field.type === 'editor' ? (
-                        <FroalaEditorComponent
-                            tag="textarea"
-                            model={formData[field.name]}
-                            onModelChange={(model: string) =>
+                        <JoditEditor
+                            ref={editor}
+                            value={formData[field.name]}
+                            config={config}
+                            onBlur={(newContent) => setContent(newContent)}
+                            onChange={(newContent) => {
                                 setFormData({
                                     ...formData,
-                                    [field.name]: model,
-                                })
-                            }
-                            config={configEditor}
+                                    [field.name]: newContent,
+                                });
+                            }}
                         />
                     ) : field.type === 'file' ? (
                         <input

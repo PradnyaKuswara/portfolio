@@ -82,8 +82,7 @@ export default function FetchProjectDetail({ slug }: FetchProjectDetailProps) {
                         </div>
                     </div>
                     <p className="leading-7 lg:leading-7 max-w-xl">
-                        Self-hostable branded link shortener built with Next.js
-                        & Notion API
+                        {project.meta_desc}
                     </p>
                     <div className="flex flex-row mt-2 gap-2">
                         <div className="flex items-center gap-2">

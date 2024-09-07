@@ -67,7 +67,7 @@ export const metadata = (): Metadata => {
                 'Portfolio website of I Gusti Ngurah A Pradnya Kuswara',
             images: [
                 {
-                    url: 'https://https://pradnyakuswara.vercel.app/assets/images/favicon.ico',
+                    url: 'https://pradnyakuswara.vercel.app/assets/images/favicon.ico',
                     width: 1200,
                     height: 630,
                     alt: 'Pradnya Kuswara',

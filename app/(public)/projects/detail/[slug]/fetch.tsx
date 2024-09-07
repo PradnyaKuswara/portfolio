@@ -63,7 +63,7 @@ export default function FetchProjectDetail({ slug }: FetchProjectDetailProps) {
             <section className="grid grid-cols-12 mx-auto  gap-4">
                 <div className="col-span-12 flex justify-center">
                     <Image
-                        src={`http://localhost:8080/${project.image}`}
+                        src={`${process.env.NEXT_PUBLIC_API_URL}/${project.image}`}
                         alt={`${project.title}`}
                         className="rounded-sm aspect-video"
                         width={1000}
@@ -132,8 +132,11 @@ export default function FetchProjectDetail({ slug }: FetchProjectDetailProps) {
                     </div>
                     <div className="border-t mt-2"></div>
                     {/* use dangerhtml */}
-                    <div dangerouslySetInnerHTML={{ __html: project.description }}></div>
-
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: project.description,
+                        }}
+                    ></div>
                 </div>
             </section>
         </>

@@ -8,6 +8,8 @@ import {
     NodejsOriginal,
     MysqlOriginal,
     PhpOriginal,
+    TailwindcssOriginal,
+    BootstrapOriginal,
 } from 'devicons-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
@@ -151,6 +153,16 @@ export const HoverEffectProject = ({
                                                 size={20}
                                                 className="text-blue-500"
                                             />
+                                        ) : stack.trim() == 'Tailwind' ? (
+                                            <TailwindcssOriginal
+                                                size={20}
+                                                className="text-blue-500"
+                                            />
+                                        ) : stack.trim() == 'Bootstrap' ? (
+                                            <BootstrapOriginal
+                                                size={20}
+                                                className="text-blue-500"
+                                            />
                                         ) : (
                                             stack
                                         )}
@@ -160,7 +172,7 @@ export const HoverEffectProject = ({
 
                             <figure className="mt-3">
                                 <Image
-                                    src={`http://localhost:8080/${item.image}`}
+                                    src={`${process.env.NEXT_PUBLIC_API_URL}/${item.image}`}
                                     alt=""
                                     width={400}
                                     height={100}

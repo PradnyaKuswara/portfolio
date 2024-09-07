@@ -51,7 +51,7 @@ export const metadata = (): Metadata => {
         ],
         authors: {
             name: 'Pradnya Kuswara',
-            url: 'https://pradnyakuswara.com',
+            url: 'https://pradnyakuswara.vercel.app',
         },
         twitter: {
             card: 'summary',
@@ -61,13 +61,13 @@ export const metadata = (): Metadata => {
         openGraph: {
             type: 'website',
             locale: 'en_US',
-            url: 'https://pradnyakuswara.com',
+            url: 'https://pradnyakuswara.vercel.app',
             title: 'Pradnya Kuswara',
             description:
                 'Portfolio website of I Gusti Ngurah A Pradnya Kuswara',
             images: [
                 {
-                    url: 'https://pradnyakuswara.com/assets/images/logo.png',
+                    url: 'https://https://pradnyakuswara.vercel.app/assets/images/favicon.ico',
                     width: 1200,
                     height: 630,
                     alt: 'Pradnya Kuswara',

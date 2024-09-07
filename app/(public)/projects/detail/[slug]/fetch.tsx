@@ -81,7 +81,7 @@ export default function FetchProjectDetail({ slug }: FetchProjectDetailProps) {
                             </span>
                         </div>
                     </div>
-                    <p className="leading-7 lg:leading-7 max-w-xl">
+                    <p className="leading-7 lg:leading-7 max-w-full">
                         {project.meta_desc}
                     </p>
                     <div className="flex flex-row mt-2 gap-2">

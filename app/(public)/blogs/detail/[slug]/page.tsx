@@ -19,12 +19,14 @@ export async function generateMetadata({
         openGraph: {
             type: 'website',
             locale: 'en_US',
-            url: 'https://pradnyakuswara.vercel.app/blogs/detail/' + article.slug,
+            url:
+                'https://pradnyakuswara.vercel.app/blogs/detail/' +
+                article.slug,
             title: article.title,
             description: article.meta_desc,
             images: [
                 {
-                    url: `${process.env.NEXT_PUBLIC_API_FETCH}/${article.thumbnail}`,
+                    url: `${process.env.NEXT_PUBLIC_API_URL}/${article.thumbnail}`,
                     width: 1200,
                     height: 630,
                     alt: article.title,

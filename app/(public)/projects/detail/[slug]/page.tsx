@@ -24,7 +24,7 @@ export async function generateMetadata({
             description: project.meta_desc,
             images: [
                 {
-                    url: `${process.env.NEXT_PUBLIC_API_FETCH}/${project.image}`,
+                    url: `${process.env.NEXT_PUBLIC_API_URL}/${project.image}`,
                     width: 1200,
                     height: 630,
                     alt: project.title,

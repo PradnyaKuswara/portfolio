@@ -5,6 +5,22 @@ import FetchCertificates from './fetchCertificate';
 
 export const metadata: Metadata = {
     title: 'About',
+    openGraph: {
+        type: 'website',
+        locale: 'en_US',
+        url: 'https://pradnyakuswara.vercel.app/about',
+        title: 'About | Pradnya Kuswara',
+        description:
+            'I am a web developer based in Bali, Indonesia. I am passionate about web development and I love to learn new things. I am currently working as a freelance web developer.',
+        images: [
+            {
+                url: 'https://pradnyakuswara.vercel.app/assets/images/logo.png',
+                width: 1200,
+                height: 630,
+                alt: 'Pradnya Kuswara',
+            },
+        ],
+    },
 };
 
 const AboutPage = () => {

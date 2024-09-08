@@ -3,6 +3,21 @@ import FetchBlogs from './fetch';
 
 export const metadata: Metadata = {
     title: 'Blog',
+    openGraph: {
+        type: 'website',
+        locale: 'en_US',
+        url: 'https://pradnyakuswara.vercel.app/blogs',
+        title: 'Blog | Pradnya Kuswara',
+        description: 'List of my blogs',
+        images: [
+            {
+                url: 'https://pradnyakuswara.vercel.app/assets/images/logo.png',
+                width: 1200,
+                height: 630,
+                alt: 'Pradnya Kuswara',
+            },
+        ],
+    },
 };
 
 const NewsPage = () => {

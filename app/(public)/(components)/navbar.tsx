@@ -49,7 +49,7 @@ const Navbar = ({ theme, setTheme }: NavbarProps) => {
                         <Link href="/projects">Project</Link>
                     </li>
                     <li className="p-2 hover:bg-primary hover:text-white hover:rounded-md text-sm">
-                        <Link href="/blogs">Blogs</Link>
+                        <Link href="/blogs">Blog</Link>
                     </li>
                 </ul>
             </div>

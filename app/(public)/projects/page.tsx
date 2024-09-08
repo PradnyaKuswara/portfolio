@@ -3,6 +3,21 @@ import FetchProjects from './fetch';
 
 export const metadata: Metadata = {
     title: 'Project',
+    openGraph: {
+        type: 'website',
+        locale: 'en_US',
+        url: 'https://pradnyakuswara.vercel.app/projects',
+        title: 'Project | Pradnya Kuswara',
+        description: 'List of my projects',
+        images: [
+            {
+                url: 'https://pradnyakuswara.vercel.app/assets/images/logo.png',
+                width: 1200,
+                height: 630,
+                alt: 'Pradnya Kuswara',
+            },
+        ],
+    },
 };
 
 const PortfoliosPage = () => {

@@ -6,6 +6,7 @@ import React from 'react';
 import { Clock, Copy, Share } from 'react-feather';
 import toast from 'react-hot-toast';
 import readingDuration from 'reading-duration';
+import Head from 'next/head';
 
 type Tag = {
     id: bigint;
@@ -81,6 +82,30 @@ export default function FetchArticleDetail({ slug }: FetchArticleDetailProps) {
 
     return (
         <>
+            <Head>
+                <title>{article.title}</title>
+                <meta name="description" content={article.meta_desc} />
+                <meta name="keywords" content={article.meta_keyword || ''} />
+                {/* Open Graph Meta Tags */}
+                <meta property="og:title" content={article.title} />
+                <meta property="og:description" content={article.meta_desc} />
+                <meta
+                    property="og:image"
+                    content={`${process.env.NEXT_PUBLIC_API_URL}/${article.thumbnail}`}
+                />
+                <meta property="og:url" content={window.location.href} />
+                <meta property="og:type" content="article" />
+
+                {/* Twitter Card Meta Tags */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={article.title} />
+                <meta name="twitter:description" content={article.meta_desc} />
+                <meta
+                    name="twitter:image"
+                    content={`${process.env.NEXT_PUBLIC_API_URL}/${article.thumbnail}`}
+                />
+            </Head>
+
             <section className="grid grid-cols-12 mx-auto  gap-4">
                 <div className="col-span-12 flex justify-center">
                     <Image

@@ -16,6 +16,21 @@ export async function generateMetadata({
         title: article.title,
         description: article.meta_desc,
         keywords: article.meta_keyword?.split(','),
+        openGraph: {
+            type: 'website',
+            locale: 'en_US',
+            url: window.location.href,
+            title: article.title,
+            description: article.meta_desc,
+            images: [
+                {
+                    url: `${process.env.NEXT_PUBLIC_API_FETCH}/${article.thumbnail}`,
+                    width: 1200,
+                    height: 630,
+                    alt: article.title,
+                },
+            ],
+        },
     };
 }
 

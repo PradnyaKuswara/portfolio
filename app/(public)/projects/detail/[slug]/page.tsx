@@ -17,7 +17,9 @@ export async function generateMetadata({
         openGraph: {
             type: 'website',
             locale: 'en_US',
-            url: window.location.href,
+            url:
+                'https://pradnyakuswara.vercel.app/blogs/detail/' +
+                project.slug,
             title: project.title,
             description: project.meta_desc,
             images: [

@@ -2,20 +2,14 @@ import { Metadata } from 'next';
 import ProjectDetail from './project';
 import { showData } from '@/app/(protected)/utils/data';
 
-export const fetchArticleData = async (slug: string) => {
-    const dataFetch = await showData(
-        `${process.env.NEXT_PUBLIC_API_FETCH}/projects-front/${slug}`
-    );
-
-    return dataFetch;
-};
-
 export async function generateMetadata({
     params,
 }: {
     params: { slug: string };
 }): Promise<Metadata> {
-    const project: Project = await fetchArticleData(params.slug);
+    const project: Project = await showData(
+        `${process.env.NEXT_PUBLIC_API_FETCH}/projects-front/${params.slug}`
+    );
     return {
         title: project.title,
         description: project.meta_desc,
@@ -23,8 +17,10 @@ export async function generateMetadata({
     };
 }
 
-const ProjectDetailPage = async({ params }: { params: { slug: string } }) => {
-    const project: Project = await fetchArticleData(params.slug);
+const ProjectDetailPage = async ({ params }: { params: { slug: string } }) => {
+    const project: Project = await showData(
+        `${process.env.NEXT_PUBLIC_API_FETCH}/projects-front/${params.slug}`
+    );
 
     return (
         <>

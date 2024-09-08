@@ -1,45 +1,16 @@
 'use client';
 
-import { showData } from '@/app/(protected)/utils/data';
 import Image from 'next/image';
 import React from 'react';
 import { Clock, Copy, Share } from 'react-feather';
 import toast from 'react-hot-toast';
 import readingDuration from 'reading-duration';
-import Head from 'next/head';
 
-type Tag = {
-    id: bigint;
-    uuid: string;
-    name: string;
-    createdAt: Date;
-    updatedAt: Date;
-};
-
-type Article = {
-    id: bigint;
-    uuid: string;
-    title: string;
-    thumbnail: string;
-    slug: string;
-    content: string;
-    meta_desc: string;
-    meta_keyword: string | null;
-    is_active: boolean;
-    createdAt: Date;
-    updatedAt: Date;
-    tags: Tag[];
-};
-
-interface FetchArticleDetailProps {
-    slug: string;
+interface BlogDetailProps {
+    article: Article;
 }
 
-export default function FetchArticleDetail({ slug }: FetchArticleDetailProps) {
-    const [article, setArticle] = React.useState<Article | undefined>(
-        undefined
-    );
-
+export default function BlogDetail({ article }: BlogDetailProps) {
     const formatDate = (date: string) => {
         return new Date(date).toLocaleDateString('en-GB', {
             day: '2-digit',
@@ -60,18 +31,6 @@ export default function FetchArticleDetail({ slug }: FetchArticleDetailProps) {
         toast.success('Link copied to clipboard');
     };
 
-    React.useEffect(() => {
-        const fetchData = async () => {
-            const dataFetch = await showData(
-                `${process.env.NEXT_PUBLIC_API_FETCH}/articles-front/${slug}`
-            );
-
-            setArticle(dataFetch);
-        };
-
-        fetchData();
-    }, [slug]);
-
     if (!article) {
         return (
             <div className="flex justify-center items-center h-screen">
@@ -82,30 +41,6 @@ export default function FetchArticleDetail({ slug }: FetchArticleDetailProps) {
 
     return (
         <>
-            <Head>
-                <title>{article.title}</title>
-                <meta name="description" content={article.meta_desc} />
-                <meta name="keywords" content={article.meta_keyword || ''} />
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={article.title} />
-                <meta property="og:description" content={article.meta_desc} />
-                <meta
-                    property="og:image"
-                    content={`${process.env.NEXT_PUBLIC_API_URL}/${article.thumbnail}`}
-                />
-                <meta property="og:url" content={window.location.href} />
-                <meta property="og:type" content="article" />
-
-                {/* Twitter Card Meta Tags */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={article.title} />
-                <meta name="twitter:description" content={article.meta_desc} />
-                <meta
-                    name="twitter:image"
-                    content={`${process.env.NEXT_PUBLIC_API_URL}/${article.thumbnail}`}
-                />
-            </Head>
-
             <section className="grid grid-cols-12 mx-auto  gap-4">
                 <div className="col-span-12 flex justify-center">
                     <Image

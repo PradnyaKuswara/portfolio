@@ -6,56 +6,11 @@ import Link from 'next/link';
 import React from 'react';
 import { GitHub, Link2, User } from 'react-feather';
 
-type ProjectCategory = {
-    id: bigint;
-    uuid: string;
-    name: string;
-    createdAt: Date;
-    updatedAt: Date;
-};
-
-type Project = {
-    id: bigint;
-    uuid: string;
-    project_category_id: bigint;
-    title: string;
-    image: string;
-    slug: string;
-    description: string;
-    stack: string;
-    link_github: string | null;
-    link_project: string | null;
-    link_documentation: string | null;
-    is_active: boolean;
-    meta_desc: string;
-    meta_keyword: string | null;
-    createdAt: Date;
-    updatedAt: Date;
-
-    ProjectCategory: ProjectCategory;
-};
-
-interface FetchProjectDetailProps {
-    slug: string;
+interface ProjectDetailProps {
+    project: Project;
 }
 
-export default function FetchProjectDetail({ slug }: FetchProjectDetailProps) {
-    const [project, setProject] = React.useState<Project | undefined>(
-        undefined
-    );
-
-    React.useEffect(() => {
-        const fetchData = async () => {
-            const dataFetch = await showData(
-                `${process.env.NEXT_PUBLIC_API_FETCH}/projects-front/${slug}`
-            );
-
-            setProject(dataFetch);
-        };
-
-        fetchData();
-    }, [slug]);
-
+export default function ProjectDetail({ project }: ProjectDetailProps) {
     if (!project) return <div>Loading...</div>;
 
     return (

@@ -6,7 +6,7 @@ function HomePage() {
     return (
         <>
             <HeroSection></HeroSection>
-            <div className="max-w-screen-lg mx-6 lg:mx-auto pt-0 pb-10 lg:pt-20 lg:pb-20 ">
+            <div className="max-w-screen-lg mx-6 lg:mx-auto pt-0 pb-10 lg:ptb-20 lg:pb-20 2xl:pt-10 2xl:pb-10 ">
                 <section
                     className="flex flex-col justify-center items-center text-center gap-4 mt-20"
                     data-aos="fade-up"

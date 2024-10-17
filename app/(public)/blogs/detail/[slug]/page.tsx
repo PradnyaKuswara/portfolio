@@ -42,7 +42,7 @@ const BlogDetailPage = async ({ params }: { params: { slug: string } }) => {
     );
 
     return (
-        <div className="min-h-screen py-36 lg:py-36 max-w-screen-lg lg:px-8 mx-4 lg:mx-auto">
+        <div className="min-h-screen pt-36 pb-10 lg:pt-36 lg:pb-10 max-w-screen-lg lg:px-8 mx-4 lg:mx-auto">
             <BlogDetail article={article} />
         </div>
     );

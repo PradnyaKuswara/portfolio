@@ -1,4 +1,4 @@
-import { Inter, Roboto_Mono, Merriweather, Roboto_Condensed, Lexend_Deca, Poppins , Noto_Sans } from 'next/font/google'
+import { Inter, Roboto_Mono, Merriweather, Roboto_Condensed, Lexend_Deca, Poppins , Noto_Sans, Manrope } from 'next/font/google'
 
 export const inter = Inter({
   subsets: ['latin'],
@@ -33,4 +33,9 @@ export const poppins = Poppins({
 export const noto_sans = Noto_Sans({
   subsets: ['latin'],
   weight: "300",
+})
+
+export const manrope = Manrope({
+  subsets: ['cyrillic'],
+  weight: "500",
 })

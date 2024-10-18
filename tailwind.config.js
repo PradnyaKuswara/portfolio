@@ -64,7 +64,7 @@ module.exports = {
                     secondary: '#818CF8',
                     accent: '#F471B5',
                     neutral: '#1E293B',
-                    'base-100': '#0E1111',
+                    'base-100': '#030712',
                     info: '#0CA5E9',
                     'info-content': '#000000',
                     success: '#2DD4BF',

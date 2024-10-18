@@ -3,7 +3,7 @@
 import TableOfContent from "@/app/(public)/(components)/toc";
 import Image from "next/image";
 import React from "react";
-import { Clock, Copy, Facebook, Instagram, Twitter } from "react-feather";
+import { Clock, Copy, Facebook, Twitter } from "react-feather";
 import toast from "react-hot-toast";
 import readingDuration from "reading-duration";
 
@@ -30,6 +30,20 @@ export default function BlogDetail({ article }: BlogDetailProps) {
   const copyLink = () => {
     navigator.clipboard.writeText(window.location.href);
     toast.success("Link copied to clipboard");
+  };
+
+  const shareFacebook = () => {
+    const shareUrlFacebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      window.location.href
+    )}&quote=${encodeURIComponent(article.title)}`;
+    window.open(shareUrlFacebook, "_blank", "noopener,noreferrer");
+  };
+
+  const shareTwitter = () => {
+    const shareUrlTwitter = `https://twitter.com/share?url=${encodeURIComponent(
+      window.location.href
+    )}&text=${encodeURIComponent(article.title)}`;
+    window.open(shareUrlTwitter, "_blank", "noopener,noreferrer");
   };
 
   if (!article) {
@@ -82,7 +96,7 @@ export default function BlogDetail({ article }: BlogDetailProps) {
             </span>
 
             <div className="flex flex-col mt-2 md:hidden">
-              {/* <FloatingDock items={links}></FloatingDock> */}
+              <div className="text-sm font-bold my-2">Share this</div>
               <div className="flex gap-4">
                 <div className="rounded-full bg-secondary p-2 flex items-center hover:bg-primary">
                   <Copy
@@ -95,18 +109,14 @@ export default function BlogDetail({ article }: BlogDetailProps) {
                   <Facebook
                     className="cursor-pointer text-secondary-content"
                     size={15}
-                  />
-                </div>
-                <div className="rounded-full bg-secondary p-2 flex items-center hover:bg-primary">
-                  <Instagram
-                    className="cursor-pointer text-secondary-content"
-                    size={15}
+                    onClick={() => shareFacebook()}
                   />
                 </div>
                 <div className="rounded-full bg-secondary p-2 flex items-center hover:bg-primary">
                   <Twitter
                     className="cursor-pointer text-secondary-content"
                     size={15}
+                    onClick={() => shareTwitter()}
                   />
                 </div>
               </div>
@@ -130,12 +140,12 @@ export default function BlogDetail({ article }: BlogDetailProps) {
               {/* table of content */}
               <aside className="h-full">
                 <div className="sticky top-20">
-                  <div className=" bg-gray-100 dark:bg-[#262626] p-4 rounded-md flex flex-col gap-4 mb-2">
+                  <div className=" bg-gray-100 dark:bg-[#090E1A] p-4 rounded-md flex flex-col gap-4 mb-2">
                     <div className="font-bold text-lg">Table of Content</div>
                     <TableOfContent></TableOfContent>
                   </div>
                   <div className="flex flex-col">
-                    {/* <FloatingDock items={links}></FloatingDock> */}
+                    <div className="text-sm font-bold my-2">Share this</div>
                     <div className="flex gap-4">
                       <div className="rounded-full bg-secondary p-2 flex items-center hover:bg-primary">
                         <Copy
@@ -148,18 +158,14 @@ export default function BlogDetail({ article }: BlogDetailProps) {
                         <Facebook
                           className="cursor-pointer text-secondary-content"
                           size={15}
-                        />
-                      </div>
-                      <div className="rounded-full bg-secondary p-2 flex items-center hover:bg-primary">
-                        <Instagram
-                          className="cursor-pointer text-secondary-content"
-                          size={15}
+                          onClick={() => shareFacebook()}
                         />
                       </div>
                       <div className="rounded-full bg-secondary p-2 flex items-center hover:bg-primary">
                         <Twitter
                           className="cursor-pointer text-secondary-content"
                           size={15}
+                          onClick={() => shareTwitter()}
                         />
                       </div>
                     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GitHub, Linkedin, Instagram } from 'react-feather';
+import { GitHub, Linkedin, Instagram, Mail } from 'react-feather';
 
 const Footer = () => {
     return (
@@ -13,14 +13,14 @@ const Footer = () => {
                             </p>
                         </div>
                         <div className="px-5 flex gap-6">
-                            <a
+                            {/* <a
                                 href="https://www.instagram.com/pkuswara/"
                                 className=""
                                 target="_blank"
                             >
                                 <span className="sr-only">Instagram</span>
                                 <Instagram className="w-5 h-5" />
-                            </a>
+                            </a> */}
                             <a
                                 href="https://github.com/PradnyaKuswara"
                                 className=""
@@ -36,6 +36,10 @@ const Footer = () => {
                             >
                                 <span className="sr-only">Linkedin</span>
                                 <Linkedin className="w-5 h-5" />
+                            </a>
+                            <a href="mailto:pradnyakuswara24@gmail.com">
+                                <span className="sr-only">Email</span>
+                                <Mail className="w-5 h-5" />
                             </a>
                         </div>
 

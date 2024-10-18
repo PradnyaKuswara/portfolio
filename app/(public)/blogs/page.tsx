@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import FetchBlogs from './fetch';
+import AllBlogs from './all-blog';
 
 export const metadata: Metadata = {
     title: 'Blog',
@@ -36,7 +36,7 @@ const NewsPage = () => {
                 </p>
 
                 <section data-aos="fade-up" data-aos-delay="100">
-                    <FetchBlogs></FetchBlogs>
+                    <AllBlogs></AllBlogs>
                 </section>
             </div>
         </>

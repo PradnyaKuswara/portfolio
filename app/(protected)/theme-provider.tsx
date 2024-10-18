@@ -6,7 +6,7 @@ import Header from './(components)/Header';
 import Sidebar from './(components)/Sidebar';
 
 const ThemeContext = React.createContext({
-    theme: 'winter',
+    theme: 'dark',
     setTheme: (theme: string) => {},
 });
 
@@ -16,7 +16,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     const [sidebarOpen, setSidebarOpen] = React.useState(false);
     const [theme, setTheme] = React.useState(
         typeof window !== 'undefined'
-            ? localStorage.getItem('theme') ?? 'light'
+            ? localStorage.getItem('theme') ?? 'dark'
             : 'light'
     );
 
@@ -38,14 +38,11 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     }, [theme]);
 
     if (!isClient) {
-        return null; // Atau bisa mengembalikan loading spinner atau apa pun
+        return null;
     }
 
     return (
         <ThemeContext.Provider value={{ theme, setTheme }}>
-            {/* <DefaultLayout theme={theme} setTheme={setTheme}>
-                {children}
-            </DefaultLayout> */}
             {/* <!-- ===== Page Wrapper Star ===== --> */}
             <div className="flex h-screen overflow-hidden">
                 {/* <!-- ===== Sidebar Star ===== --> */}
@@ -61,8 +58,6 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
                     <Header
                         sidebarOpen={sidebarOpen}
                         setSidebarOpen={setSidebarOpen}
-                        theme={theme}
-                        setTheme={setTheme}
                     />
                     {/* <!-- ===== Header End ===== --> */}
 

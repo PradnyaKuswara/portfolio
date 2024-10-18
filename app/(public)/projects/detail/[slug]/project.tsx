@@ -1,6 +1,5 @@
 'use client';
 
-import { showData } from '@/app/(protected)/utils/data';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -11,8 +10,6 @@ interface ProjectDetailProps {
 }
 
 export default function ProjectDetail({ project }: ProjectDetailProps) {
-    if (!project) return <div>Loading...</div>;
-
     return (
         <>
             <section className="grid grid-cols-12 mx-auto  gap-4">

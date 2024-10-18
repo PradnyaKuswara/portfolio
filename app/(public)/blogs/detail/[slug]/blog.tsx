@@ -1,5 +1,6 @@
 "use client";
 
+import BtnIcon from "@/app/(public)/(components)/btn-icon";
 import TableOfContent from "@/app/(public)/(components)/toc";
 import Image from "next/image";
 import React from "react";
@@ -12,6 +13,29 @@ interface BlogDetailProps {
 }
 
 export default function BlogDetail({ article }: BlogDetailProps) {
+  const listsBtnIcon = [
+    {
+      title: "Clipboard",
+      icon: (
+        <Copy className="cursor-pointer text-secondary-content" size={15} />
+      ),
+      action: () => copyLink(),
+    },
+    {
+      title: "Facebook",
+      icon: (
+        <Facebook className="cursor-pointer text-secondary-content" size={15} />
+      ),
+      action: () => shareFacebook(),
+    },
+    {
+      title: "Twitter",
+      icon: (
+        <Twitter className="cursor-pointer text-secondary-content" size={15} />
+      ),
+      action: () => shareTwitter(),
+    },
+  ];
   const formatDate = (date: string) => {
     return new Date(date).toLocaleDateString("en-GB", {
       day: "2-digit",
@@ -98,27 +122,7 @@ export default function BlogDetail({ article }: BlogDetailProps) {
             <div className="flex flex-col mt-2 md:hidden">
               <div className="text-sm font-bold my-2">Share this</div>
               <div className="flex gap-4">
-                <div className="rounded-full bg-secondary p-2 flex items-center hover:bg-primary">
-                  <Copy
-                    className="cursor-pointer text-secondary-content"
-                    size={15}
-                    onClick={() => copyLink()}
-                  />
-                </div>
-                <div className="rounded-full bg-secondary p-2 flex items-center hover:bg-primary">
-                  <Facebook
-                    className="cursor-pointer text-secondary-content"
-                    size={15}
-                    onClick={() => shareFacebook()}
-                  />
-                </div>
-                <div className="rounded-full bg-secondary p-2 flex items-center hover:bg-primary">
-                  <Twitter
-                    className="cursor-pointer text-secondary-content"
-                    size={15}
-                    onClick={() => shareTwitter()}
-                  />
-                </div>
+                <BtnIcon listBtnIcon={listsBtnIcon}></BtnIcon>
               </div>
             </div>
           </div>
@@ -137,7 +141,6 @@ export default function BlogDetail({ article }: BlogDetailProps) {
             </div>
 
             <div className="hidden lg:col-span-2 lg:flex">
-              {/* table of content */}
               <aside className="h-full">
                 <div className="sticky top-20">
                   <div className=" bg-gray-100 dark:bg-[#090E1A] p-4 rounded-md flex flex-col gap-4 mb-2">
@@ -147,27 +150,7 @@ export default function BlogDetail({ article }: BlogDetailProps) {
                   <div className="flex flex-col">
                     <div className="text-sm font-bold my-2">Share this</div>
                     <div className="flex gap-4">
-                      <div className="rounded-full bg-secondary p-2 flex items-center hover:bg-primary">
-                        <Copy
-                          className="cursor-pointer text-secondary-content"
-                          size={15}
-                          onClick={() => copyLink()}
-                        />
-                      </div>
-                      <div className="rounded-full bg-secondary p-2 flex items-center hover:bg-primary">
-                        <Facebook
-                          className="cursor-pointer text-secondary-content"
-                          size={15}
-                          onClick={() => shareFacebook()}
-                        />
-                      </div>
-                      <div className="rounded-full bg-secondary p-2 flex items-center hover:bg-primary">
-                        <Twitter
-                          className="cursor-pointer text-secondary-content"
-                          size={15}
-                          onClick={() => shareTwitter()}
-                        />
-                      </div>
+                      <BtnIcon listBtnIcon={listsBtnIcon}></BtnIcon>
                     </div>
                   </div>
                 </div>

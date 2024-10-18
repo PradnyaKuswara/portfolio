@@ -5,7 +5,7 @@ import React from 'react';
 import useSWR from 'swr';
 import { HoverEffectBlog } from '../(components)/ui/card-hover-effect-blog';
 
-export default function FetchBlogs() {
+export default function AllBlogs() {
     const [currentPage, setCurrentPage] = React.useState(1);
     const [searchQuery, setSearchQuery] = React.useState('');
     const itemsPerPage = 6;

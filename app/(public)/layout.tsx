@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { poppins, manrope } from "../fonts";
+import { manrope } from "../fonts";
 
 import "../globals.css";
 import "animate.css";

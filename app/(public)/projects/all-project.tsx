@@ -5,7 +5,7 @@ import React from 'react';
 import useSWR from 'swr';
 import { HoverEffectProject } from '../(components)/ui/card-hover-effect-project';
 
-export default function FetchProjects() {
+export default function AllProjects() {
     const [currentPage, setCurrentPage] = React.useState(1);
     const itemsPerPage = 6;
 

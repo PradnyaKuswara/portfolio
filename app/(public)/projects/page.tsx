@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import FetchProjects from './fetch';
+import AllProjects from './all-project';
 
 export const metadata: Metadata = {
     title: 'Project',
@@ -35,7 +35,7 @@ const PortfoliosPage = () => {
                     Showcase of my works{' '}
                 </p>
                 <section data-aos="fade-up" data-aos-delay="100">
-                    <FetchProjects></FetchProjects>
+                    <AllProjects></AllProjects>
                 </section>
             </div>
         </>

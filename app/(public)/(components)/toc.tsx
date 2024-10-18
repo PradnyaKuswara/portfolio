@@ -58,7 +58,7 @@ const TableOfContent: React.FC = () => {
       });
     }
   };
-  
+
   return (
     <nav>
       <ul>

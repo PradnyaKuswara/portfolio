@@ -6,7 +6,7 @@ import React from 'react';
 import { GitHub, Link2, User } from 'react-feather';
 
 interface ProjectDetailProps {
-    project: Project;
+    project: IProject;
 }
 
 export default function ProjectDetail({ project }: ProjectDetailProps) {

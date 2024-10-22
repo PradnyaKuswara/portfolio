@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 import readingDuration from "reading-duration";
 
 interface BlogDetailProps {
-  article: Article;
+  article: IArticle;
 }
 
 export default function BlogDetail({ article }: BlogDetailProps) {

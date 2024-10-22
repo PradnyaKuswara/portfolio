@@ -8,7 +8,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const article: Article = await showData(
+  const article: IArticle = await showData(
     `${process.env.NEXT_PUBLIC_API_FETCH}/articles-front/${params.slug}`
   );
 
@@ -35,7 +35,7 @@ export async function generateMetadata({
 }
 
 const BlogDetailPage = async ({ params }: { params: { slug: string } }) => {
-  const article: Article = await showData(
+  const article: IArticle = await showData(
     `${process.env.NEXT_PUBLIC_API_FETCH}/articles-front/${params.slug}`
   );
 

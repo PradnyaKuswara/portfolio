@@ -7,7 +7,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const project: Project = await showData(
+  const project: IProject = await showData(
     `${process.env.NEXT_PUBLIC_API_FETCH}/projects-front/${params.slug}`
   );
   return {
@@ -33,7 +33,7 @@ export async function generateMetadata({
 }
 
 const ProjectDetailPage = async ({ params }: { params: { slug: string } }) => {
-  const project: Project = await showData(
+  const project: IProject = await showData(
     `${process.env.NEXT_PUBLIC_API_FETCH}/projects-front/${params.slug}`
   );
 

@@ -18,6 +18,12 @@ export const metadata = (): Metadata => {
     },
     description:
       "Portfolio website of I Gusti Ngurah A Pradnya Kuswara. A software engineer and web developer",
+    verification: {
+      other: {
+        "google-site-verification":
+          "kasZrRC5UBA8D2xoQr93tZppHD611MeZVPThWyfxqwI",
+      },
+    },
     icons: {
       icon: [
         {

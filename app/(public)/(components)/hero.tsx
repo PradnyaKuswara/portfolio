@@ -1,6 +1,6 @@
 import { FileText, GitHub, Linkedin } from "react-feather";
 import { Button } from "./ui/moving-border";
-import { useTheme } from "../theme-provider";
+import { useTheme } from "../../providers/theme-provider";
 import Link from "next/link";
 import BoxReveal from "./ui/box-reveal";
 import Marquee from "./ui/marquee";

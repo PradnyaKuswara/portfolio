@@ -1,14 +1,16 @@
 import React from "react";
 import type { Metadata } from "next";
-import { manrope } from "../fonts";
+import { manrope } from "../styles/fonts";
 
-import "../globals.css";
+import "@/app/styles/globals.css";
 import "animate.css";
 
 import { AOSInit } from "../lib/aos";
-import ThemeProvider from "./theme-provider";
+import ThemeProvider from "../providers/theme-provider";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "react-hot-toast";
+import Navbar from "./(components)/navbar";
+import Footer from "./(components)/footer";
 
 export const metadata = (): Metadata => {
   return {
@@ -104,7 +106,17 @@ export default function RootLayout({
           shadow="0 0 10px #2299DD,0 0 5px #2299DD"
         />
         <Toaster position="bottom-center" />
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <header className="max-w-screen-md">
+            <Navbar />
+          </header>
+
+          <main>{children}</main>
+
+          <footer>
+            <Footer />
+          </footer>
+        </ThemeProvider>
       </body>
     </html>
   );

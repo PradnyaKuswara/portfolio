@@ -1,4 +1,4 @@
-type ProjectCategory = {
+interface IProjectCategory {
   id: bigint;
   uuid: string;
   name: string;
@@ -6,7 +6,7 @@ type ProjectCategory = {
   updatedAt: Date;
 };
 
-type Project = {
+interface IProject {
   id: bigint;
   uuid: string;
   project_category_id: bigint;

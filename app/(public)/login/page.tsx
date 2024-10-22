@@ -2,29 +2,23 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import useAuthMiddleware from "@/app/(protected)/middleware/useAuthMiddleware";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
-
-interface User {
-  uuid: string;
-  email: string;
-  name: string;
-}
+import { useAuth } from "@/app/providers/auth-provider";
 
 const LoginPage = () => {
-  const user = useAuthMiddleware() as User | null;
-
   const router = useRouter();
-
-  if (user) {
-    router.push("/admin/dashboard");
-  }
-
+  const { user }: { user: IUser } = useAuth();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [errorEmail, setErrorEmail] = React.useState<string[]>([]);
   const [errorPassword, setErrorPassword] = React.useState<string[]>([]);
+
+  React.useEffect(() => {
+    if (user) {
+      router.push("admin/dashboard");
+    }
+  }, [user, router]);
 
   const handleLogin = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -54,11 +48,8 @@ const LoginPage = () => {
 
     if (response.status === 200) {
       const { token } = await response.json();
-
-      Cookies.set("token", token, { expires: 1, path: "/" }); // Set cookie dengan masa berlaku 7 hari
-
+      Cookies.set("token", token, { expires: 1, path: "/" });
       toast.success("Login successfully");
-
       router.push("/admin/dashboard");
     }
 

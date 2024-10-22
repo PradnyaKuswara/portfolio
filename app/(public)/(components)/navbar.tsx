@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import { Moon, Sun } from "react-feather";
-import { useTheme } from "@/app/(public)/theme-provider";
+import { useTheme } from "@/app/providers/theme-provider";
 import { useRouter, usePathname } from "next/navigation";
 
 const Navbar: React.FC = () => {

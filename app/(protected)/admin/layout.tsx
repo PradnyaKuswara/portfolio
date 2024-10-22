@@ -1,20 +1,22 @@
-'use client';
+"use client";
 
-import React from 'react';
-import useAuthMiddleware from '../middleware/useAuthMiddleware';
-
-interface User {
-    uuid: string;
-    email: string;
-    name: string;
-}
+import React from "react";
+import { useAuth } from "../../providers/auth-provider";
+import { useRouter } from "next/navigation";
 
 export default function AdminLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    const user = useAuthMiddleware() as User | null;
+  //   const { user } = useAuth();
+  //   const router = useRouter();
 
-    return <>{children}</>;
+  //   React.useEffect(() => {
+  //     if (!user) {
+  //       router.push("/login");
+  //     }
+  //   });
+
+  return children;
 }

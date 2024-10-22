@@ -1,3 +1,4 @@
+import { AuthProvider } from "@/app/providers/auth-provider";
 import React from "react";
 
 export default function RootLayout({
@@ -5,9 +6,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html>
-      <body>{children}</body>
-    </html>
-  );
+  return <AuthProvider>{children}</AuthProvider>;
 }

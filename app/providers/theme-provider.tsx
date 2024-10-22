@@ -1,8 +1,6 @@
 "use client";
 
 import React from "react";
-import Navbar from "./(components)/navbar";
-import Footer from "./(components)/footer";
 
 export const ThemeContext = React.createContext({
   theme: "dark",
@@ -41,15 +39,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <header className="max-w-screen-md">
-        <Navbar />
-      </header>
-
-      <main>{children}</main>
-
-      <footer>
-        <Footer />
-      </footer>
+      {children}
     </ThemeContext.Provider>
   );
 };

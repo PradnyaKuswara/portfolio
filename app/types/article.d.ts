@@ -1,5 +1,4 @@
-// types.ts
-type Tag = {
+interface ITag {
   id: bigint;
   uuid: string;
   name: string;
@@ -7,7 +6,7 @@ type Tag = {
   updatedAt: Date;
 };
 
-type Article = {
+interface IArticle  {
   id: bigint;
   uuid: string;
   title: string;

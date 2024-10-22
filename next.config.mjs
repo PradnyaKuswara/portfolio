@@ -6,7 +6,8 @@ const nextConfig = {
             'landingfoliocom.imgix.net',
             'localhost',
             'localhost:5000',
-            'api.pradnyakuswara.cloud'
+            'api.pradnyakuswara.cloud',
+            'assets.aceternity.com'
         ],
     },
 };

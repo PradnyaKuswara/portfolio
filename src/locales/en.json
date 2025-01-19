@@ -1,0 +1,31 @@
+{
+  "home-page": {
+    "title": "Home",
+    "description": "Welcome to the home page"
+  },
+  "about-page": {
+    "title": "About",
+    "description": "Welcome to the about page"
+  },
+  "blog-page": {
+    "title": "Blog",
+    "description": "Welcome to the blog page"
+  },
+  "projects-page": {
+    "title": "Projects",
+    "description": "Welcome to the projects page"
+  },
+  "login-page": {
+    "title": "Login",
+    "description": "Please enter your credentials to login"
+  },
+  "admin-page": {
+    "title": "Admin",
+    "description": "Welcome to the admin page",
+    "main-dashboard": {
+      "title": "Dashboard",
+      "description": "Welcome to the dashboard"
+    }
+  }
+  
+}

@@ -1,0 +1,30 @@
+{
+  "home-page": {
+    "title": "ホーム",
+    "description": "ホームページへようこそ"
+  },
+  "about-page": {
+    "title": "アバウト",
+    "description": "アバウトページへようこそ"
+  },
+  "blog-page": {
+    "title": "ブログ",
+    "description": "ブログページへようこそ"
+  },
+  "projects-page": {
+    "title": "プロジェクト",
+    "description": "プロジェクトページへようこそ"
+  },
+  "login-page": {
+    "title": "ログイン",
+    "description": "ログインするには資格情報を入力してください"
+  },
+  "admin-page": {
+    "title": "管理者",
+    "description": "管理者ページへようこそ",
+    "main-dashboard": {
+      "title": "ダッシュボード",
+      "description": "ダッシュボードへようこそ"
+    }
+  }
+}

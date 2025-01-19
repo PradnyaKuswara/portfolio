@@ -1,0 +1,30 @@
+{
+  "home-page": {
+    "title": "Beranda",
+    "description": "Selamat datang di halaman beranda"
+  },
+  "about-page": {
+    "title": "Tentang",
+    "description": "Selamat datang di halaman tentang"
+  },
+  "blog-page": {
+    "title": "Blog",
+    "description": "Selamat datang di halaman blog"
+  },
+  "projects-page": {
+    "title": "Proyek",
+    "description": "Selamat datang di halaman proyek"
+  },
+  "login-page": {
+    "title": "Masuk",
+    "description": "Silakan masukkan kredensial Anda untuk masuk"
+  },
+  "admin-page": {
+    "title": "Admin",
+    "description": "Selamat datang di halaman admin",
+    "main-dashboard": {
+      "title": "Dasbor",
+      "description": "Selamat datang di dasbor"
+    }
+  }
+}

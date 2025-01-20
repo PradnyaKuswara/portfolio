@@ -12,3 +12,8 @@ export const ConfirmationModalAtom = atom({
     onConfirm: null as (() => void) | null,
   },
 });
+
+export const UserAtom = atom({
+  key: 'UserAtom',
+  default: null,
+})

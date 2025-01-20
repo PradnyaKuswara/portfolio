@@ -3,6 +3,7 @@ import { ROUTE } from '../../shared/constants/constantRoute';
 import MainDashboardPage from '../../pages/Dashboard/MainDashboardPage';
 import { RouteObject } from 'react-router-dom';
 import DashboardLayout from '../../components/Layout/DashboardLayout';
+import ProtectedRoute from '../ProtectedRoute';
 
 interface Page {
   path: string;
@@ -19,11 +20,13 @@ const useRouteDashboard = () => {
       ({ path, component: Component }) => ({
         path,
         element: (
-          <DashboardLayout>
-            <Suspense fallback={<div>Loading...</div>}>
-              <Component />
-            </Suspense>
-          </DashboardLayout>
+          <ProtectedRoute>
+            <DashboardLayout>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Component />
+              </Suspense>
+            </DashboardLayout>
+          </ProtectedRoute>
         ),
       })
     );

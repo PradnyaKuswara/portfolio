@@ -15,7 +15,7 @@ function HomePage() {
           data-aos="fade-up"
         >
           <div className="badge badge-primary">
-            <span className="text-xs">Featured</span>
+            <span className="text-xs">{t('home-page.section-things.title-header')}</span>
           </div>
           <h1 className="text-3xl lg:text-4xl night:text-red font-extrabold">
             {t('home-page.section-things.title')}

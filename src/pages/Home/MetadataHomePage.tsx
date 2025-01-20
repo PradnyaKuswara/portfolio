@@ -5,7 +5,6 @@ const MetadataHomePage: React.FC = () => {
   return (
     <Metadata>
       <title>Home Page | Pradnya Kuswara</title>
-      <meta name="description" content="Home page" />
     </Metadata>
   );
 };

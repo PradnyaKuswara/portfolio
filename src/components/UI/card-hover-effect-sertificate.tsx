@@ -25,7 +25,7 @@ export const HoverEffectSertificate = ({
     items: Certificate[];
     className?: string;
 }) => {
-    let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     const limitdesc = (desc: string) => {
         return desc.length > 50 ? desc.slice(0, 50) + '...' : desc;

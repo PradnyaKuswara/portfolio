@@ -1,7 +1,9 @@
 import React from 'react';
 import { GitHub, Linkedin, Mail } from 'react-feather';
+import { useTranslation } from 'react-i18next';
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div className="shadow-lg p-4">
@@ -9,7 +11,7 @@ const Footer: React.FC = () => {
           <nav className="flex flex-col flex-wrap items-center justify-center -mx-5 -my-2 gap-4">
             <div className="px-5">
               <p className="text-sm text-center font-bold">
-                Reach out to me on social media
+                {t('footer.title')}
               </p>
             </div>
             <div className="px-5 flex gap-6">
@@ -37,7 +39,7 @@ const Footer: React.FC = () => {
 
             <div className="px-5">
               <p className="text-sm text-center text-gray-400">
-                {new Date().getFullYear()} Pradnya Kuswara. All rights reserved.
+                {new Date().getFullYear()} © {t('footer.description')}.
               </p>
             </div>
           </nav>

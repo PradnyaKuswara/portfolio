@@ -2,6 +2,7 @@ import React from 'react';
 import useBlogViewModel from './useBlogViewModel';
 import { HoverEffectBlog } from '../../components/UI/card-hover-effect-blog';
 import MetadataBlogPage from './MetadataBlogPage';
+import { useTranslation } from 'react-i18next';
 
 const BlogPage: React.FC = () => {
   const {
@@ -12,6 +13,9 @@ const BlogPage: React.FC = () => {
     onPageChange,
     onSearchChange,
   } = useBlogViewModel();
+
+  const { t } = useTranslation();
+
   return (
     <>
       <MetadataBlogPage />
@@ -21,10 +25,10 @@ const BlogPage: React.FC = () => {
           data-aos="fade-right"
           data-aos-delay="100"
         >
-          My Blogs
+          {t('blog-page.section-blog.title')}
         </h1>
         <p className="mt-2" data-aos="fade-right" data-aos-delay="100">
-          List of my blogs{' '}
+          {t('blog-page.section-blog.title-2')}{' '}
         </p>
 
         <section data-aos="fade-up" data-aos-delay="100">
@@ -33,7 +37,7 @@ const BlogPage: React.FC = () => {
               <input
                 type="text"
                 className="grow"
-                placeholder="Search"
+                placeholder={t('words.search')}
                 value={searchQuery}
                 onChange={onSearchChange}
               />
@@ -59,7 +63,7 @@ const BlogPage: React.FC = () => {
           ) : (
             <div className="text-center text-lg font-bold mt-10">
               {' '}
-              Blog not found 😢{' '}
+              {t('blog-page.section-blog.not-found')} 😢{' '}
             </div>
           )}
           <div className="flex justify-center">
@@ -70,14 +74,14 @@ const BlogPage: React.FC = () => {
                   onClick={() => onPageChange(currentPage - 1)}
                   disabled={currentPage === 1}
                 >
-                  Previous
+                  {t('words.button.previous')}
                 </button>
                 <button
                   className="join-item btn btn-outline"
                   onClick={() => onPageChange(currentPage + 1)}
                   disabled={currentPage === totalPages}
                 >
-                  Next
+                  {t('words.button.next')}
                 </button>
               </div>
             )}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Moon, Sun } from 'react-feather';
 import { useTheme } from '../../hooks/useTheme';
 import { Link } from 'react-router-dom';
@@ -17,6 +17,7 @@ const Navbar: React.FC = () => {
   const { i18n, t } = useTranslation();
   const storage = useLocalStorage();
   const language = storage.getLocalStorage(KEY.localStorage.locale.name);
+  const dropdownLanguage = useRef<HTMLUListElement>(null);
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -44,6 +45,23 @@ const Navbar: React.FC = () => {
     setCurrentUrl(location.pathname);
   }, [location.pathname]);
 
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownLanguage.current &&
+        !dropdownLanguage.current.contains(event.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <div
       className={`navbar fixed px-4 lg:px-0 py-4 lg:py-2 z-[2] top-0 shadow-sm flex justify-between lg:justify-around ${
@@ -58,7 +76,9 @@ const Navbar: React.FC = () => {
             className={`p-2 hover:bg-primary hover:text-white hover:rounded-md text-sm 
             ${currentUrl == '/' ? 'bg-primary text-white rounded-md' : ''}`}
           >
-            <Link to="/">{t(`${ROUTE.home.locale}.title`)}</Link>
+            <Link to={ROUTE.home.fullPath}>
+              {t(`${ROUTE.home.locale}.title`)}
+            </Link>
           </li>
           <li
             className={`p-2 hover:bg-primary hover:text-white hover:rounded-md text-sm 
@@ -66,7 +86,9 @@ const Navbar: React.FC = () => {
               currentUrl == '/about' ? 'bg-primary text-white rounded-md' : ''
             }`}
           >
-            <Link to="/about">{t(`${ROUTE.about.locale}.title`)}</Link>
+            <Link to={ROUTE.about.fullPath}>
+              {t(`${ROUTE.about.locale}.title`)}
+            </Link>
           </li>
           <li
             className={`p-2 hover:bg-primary hover:text-white hover:rounded-md text-sm 
@@ -76,7 +98,9 @@ const Navbar: React.FC = () => {
                 : ''
             }`}
           >
-            <Link to="/projects">{t(`${ROUTE.project.locale}.title`)}</Link>
+            <Link to={ROUTE.project.fullPath}>
+              {t(`${ROUTE.project.locale}.title`)}
+            </Link>
           </li>
           <li
             className={`p-2 hover:bg-primary hover:text-white hover:rounded-md text-sm 
@@ -86,7 +110,9 @@ const Navbar: React.FC = () => {
                 : ''
             }`}
           >
-            <Link to="/blogs">{t(`${ROUTE.blog.locale}.title`)}</Link>
+            <Link to={ROUTE.blog.fullPath}>
+              {t(`${ROUTE.blog.locale}.title`)}
+            </Link>
           </li>
         </ul>
       </div>
@@ -106,31 +132,28 @@ const Navbar: React.FC = () => {
               ) : (
                 <span className="flag flag-country-gb"></span>
               )}
-
-              {language === 'id'
-                ? 'Bahasa Indonesia'
-                : language === 'ja'
-                ? '日本語'
-                : 'English'}
             </button>
 
             {isDropdownOpen && (
-              <ul className="absolute z-10 border bg-base-100 rounded shadow mt-2 min-w-full">
+              <ul
+                ref={dropdownLanguage}
+                className="absolute right-1 z-10 border bg-base-100 rounded shadow mt-2 min-w-full"
+              >
                 <li
-                  className="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
+                  className="flex  gap-2 px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
                   onClick={() => changeLanguage('en')}
                 >
                   <span className="flag flag-country-gb"></span> English
                 </li>
                 <li
-                  className="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
+                  className="flex gap-2 px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
                   onClick={() => changeLanguage('id')}
                 >
                   <span className="flag flag-country-id"></span> Bahasa
                   Indonesia
                 </li>
                 <li
-                  className="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
+                  className="flex gap-2 px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
                   onClick={() => changeLanguage('ja')}
                 >
                   <span className="flag flag-country-jp"></span> 日本語

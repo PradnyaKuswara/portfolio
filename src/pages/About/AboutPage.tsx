@@ -1,8 +1,10 @@
 import React from 'react';
 import { cn } from '../../libs/utils';
 import { DotPattern } from '../../components/UI/dot-pattern';
+import { useTranslation } from 'react-i18next';
 
 const AboutPage: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div className="min-h-screen py-36 lg:py-36 max-w-screen-lg lg:px-8 mx-4 lg:mx-auto">
@@ -17,19 +19,15 @@ const AboutPage: React.FC = () => {
             data-aos="fade-right"
             data-aos-delay="100"
           >
-            <h1 className="text-4xl">About</h1>
+            <h1 className="text-4xl">{t('about-page.title')}</h1>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary via-secondary to-accent inline-block text-transparent bg-clip-text">
-              I Gusti Ngurah A Pradnya Kuswara
+              {t('words.full-name-2')}
             </h1>
             <p className="leading-relaxed lg:leading-7">
-              I am a web developer based in Bali, Indonesia. I am passionate
-              about web development and I love to learn new things. I am
-              currently working as a freelance web developer.
+              {t('about-page.section-about.description')}
             </p>
             <p className="leading-relaxed lg:leading-7">
-              I am a web developer based in Bali, Indonesia. I am passionate
-              about web development and I love to learn new things. I am
-              currently working as a freelance web developer.
+              {t('about-page.section-about.description-2')}
             </p>
           </div>
           <div
@@ -47,19 +45,18 @@ const AboutPage: React.FC = () => {
 
         <section className="mt-20" data-aos="fade-up" data-aos-delay="100">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-primary via-secondary to-accent inline-block text-transparent bg-clip-text">
-            Certificate
+            {t('about-page.section-certificate.title')}
           </h1>
 
           {/* <FetchCertificates></FetchCertificates> */}
         </section>
         <section className="mt-10" data-aos="fade-up" data-aos-delay="100">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-primary via-secondary to-accent inline-block text-transparent bg-clip-text">
-            Contact
+            {t('about-page.section-contact.title')}
           </h1>
           <div className="flex flex-col gap-4 mt-4">
             <p className="leading-relaxed">
-              Do contact me if you need my opinion about web development. I’ll
-              be happy to help! (find my email in the footer)
+              {t('about-page.section-contact.description')}
             </p>
           </div>
         </section>

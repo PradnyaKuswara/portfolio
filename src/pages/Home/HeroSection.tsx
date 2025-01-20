@@ -15,9 +15,11 @@ import BoxReveal from '../../components/UI/box-reveal';
 import { Link } from 'react-router-dom';
 import { Button } from '../../components/UI/moving-border';
 import Marquee from '../../components/UI/marquee';
+import { useTranslation } from 'react-i18next';
 
 const HeroSection = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
 
   const backgroundColor = theme == 'light' ? '#FFFFFF' : '#00000';
 
@@ -30,13 +32,14 @@ const HeroSection = () => {
         <div className="pt-36 lg:pt-48 max-w-screen-lg lg:px-8 mx-4 lg:mx-auto">
           <div className="flex flex-col gap-4">
             <BoxReveal boxColor={'#5046e6'} duration={0.5}>
-              <h1>Hi!</h1>
+              <h1>{t('words.Hi')}</h1>
             </BoxReveal>
 
             <BoxReveal boxColor={'#5046e6'} duration={0.5}>
               <h1 className="text-4xl  font-bold">
-                You can call me <span className="text-primary">Kuswara.</span>
-                👋
+                {t('home-page.hero-section.title')}{' '}
+                <span className="text-primary">{t('words.name')}</span>
+                .👋
               </h1>
             </BoxReveal>
 
@@ -47,9 +50,7 @@ const HeroSection = () => {
             <BoxReveal boxColor={'#5046e6'} duration={0.5}>
               <p className="lg:leading-7">
                 {/* description */}
-                I&apos;m a web developer based in Bali, Indonesia. I&apos;m
-                passionate about web development and I love to learn new things.
-                I&apos;m currently working as a freelance web developer.
+                {t('home-page.hero-section.description')}
               </p>
             </BoxReveal>
 
@@ -61,7 +62,7 @@ const HeroSection = () => {
                     className="bg-transparent text-primary  dark:text-accent   "
                     borderClassName="border-accent"
                   >
-                    My Portfolio
+                    {t('home-page.hero-section.cta.cta-1')}
                   </Button>
                 </Link>
                 <Link to="/about" className="hover:scale-110 transition-all">
@@ -71,7 +72,7 @@ const HeroSection = () => {
                     borderClassName="border-accent"
                     duration={1}
                   >
-                    About Me
+                    {t('home-page.hero-section.cta.cta-2')}
                   </Button>
                 </Link>
               </div>

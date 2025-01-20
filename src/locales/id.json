@@ -1,19 +1,53 @@
 {
   "home-page": {
     "title": "Beranda",
-    "description": "Selamat datang di halaman beranda"
+    "description": "Selamat datang di halaman beranda",
+    "hero-section": {
+      "title": "Kamu bisa memanggilku",
+      "description": "Saya adalah seorang pengembang web yang berbasis di Bali, Indonesia. Saya sangat menyukai pengembangan web dan senang mempelajari hal-hal baru. Saat ini, saya bekerja sebagai pengembang web freelance.",
+      "cta": {
+        "cta-1": "Portofolio Saya",
+        "cta-2": "Tentang Saya"
+      }
+    },
+    "section-things": {
+      "title": "Saya Suka Membangun Hal Baru",
+      "description": "Di waktu luang saya, saya suka membangun hal-hal yang menurut saya menarik. Saya suka mempelajari hal-hal baru dan bereksperimen dengan teknologi baru. Saya suka membangun hal-hal yang bisa saya gunakan dalam kehidupan sehari-hari. Saya suka membangun hal-hal yang bisa saya bagikan dengan orang lain."
+    }
   },
   "about-page": {
     "title": "Tentang",
-    "description": "Selamat datang di halaman tentang"
+    "description": "Selamat datang di halaman tentang",
+    "section-about": {
+      "description": "Saya adalah seorang pengembang web yang berbasis di Bali, Indonesia. Saya sangat menyukai pengembangan web dan senang mempelajari hal-hal baru. Saat ini, saya bekerja sebagai pengembang web freelance.",
+      "description-2": "Saya adalah seorang pengembang web yang berbasis di Bali, Indonesia. Saya sangat menyukai pengembangan web dan senang mempelajari hal-hal baru. Saat ini, saya bekerja sebagai pengembang web freelance."
+    },
+    "section-certificate": {
+      "title": "Sertifikat",
+      "description": "Saya memiliki sertifikat dalam pengembangan web dari Universitas Bali. Saya memiliki sertifikat dalam pengembangan web dari Universitas Bali."
+    },
+    "section-contact": {
+      "title": "Kontak",
+      "description": "Hubungi saya jika Anda membutuhkan pendapat saya tentang pengembangan web. Saya dengan senang hati akan membantu! (temukan email saya di footer)"
+    }
   },
   "blog-page": {
     "title": "Blog",
-    "description": "Selamat datang di halaman blog"
+    "description": "Selamat datang di halaman blog",
+    "section-blog": {
+      "title": "Blog Saya",
+      "title-2": "Daftar blog saya",
+      "not-found": "Blog tidak ditemukan"
+    }
   },
-  "projects-page": {
+  "project-page": {
     "title": "Proyek",
-    "description": "Selamat datang di halaman proyek"
+    "description": "Selamat datang di halaman proyek",
+    "section-project": {
+      "title": "Proyek Saya",
+      "title-2": "Karya-karya saya",
+      "not-found": "Proyek tidak ditemukan"
+    }
   },
   "login-page": {
     "title": "Masuk",
@@ -26,5 +60,21 @@
       "title": "Dasbor",
       "description": "Selamat datang di dasbor"
     }
+  },
+  "footer": {
+    "title": "Hubungi saya di media sosial",
+    "description": "Pradnya Kuswara. Hak cipta dilindungi undang-undang."
+  },
+  "words": {
+    "name": "Kuswara",
+    "Hi": "Hai!",
+    "title": "Kuswara - Portofolio",
+    "full-name": "Pradnya Kuswara",
+    "full-name-2": "I Gusti Ngurah A Pradnya Kuswara",
+    "button": {
+      "next": "Berikutnya",
+      "previous": "Sebelumnya"
+    },
+    "search": "Cari"
   }
 }

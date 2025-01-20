@@ -1,19 +1,53 @@
 {
   "home-page": {
     "title": "Home",
-    "description": "Welcome to the home page"
+    "description": "Welcome to the home page",
+    "hero-section": {
+      "title": "You can call me",
+      "description": "I'm a web developer based in Bali, Indonesia. I&apos;m passionate about web development and I love to learn new things.I&apos;m currently working as a freelance web developer.",
+      "cta": {
+        "cta-1": "My Portfolio",
+        "cta-2": "About Me"
+      }
+    },
+    "section-things": {
+      "title": "I Like Building Things",
+      "description": "During my free time, I like to build things that I find interesting. I like to learn new things and experiment with new technologies. I like to build things that I can use in my daily life. I like to build things that I can share with others."
+    }
   },
   "about-page": {
     "title": "About",
-    "description": "Welcome to the about page"
+    "description": "Welcome to the about page",
+    "section-about": {
+      "description": " I am a web developer based in Bali, Indonesia. I am passionate about web development and I love to learn new things. I am currently working as a freelance web developer.",
+      "description-2": " I am a web developer based in Bali, Indonesia. I am passionate about web development and I love to learn new things. I am currently working as a freelance web developer."
+    },
+    "section-certificate": {
+      "title": "Certificate",
+      "description": "I have a certificate in web development from the University of Bali. I have a certificate in web development from the University of Bali."
+    },
+    "section-contact": {
+      "title": "Contact",
+      "description": "Do contact me if you need my opinion about web development. I’ll be happy to help! (find my email in the footer)"
+    }
   },
   "blog-page": {
-    "title": "Blog",
-    "description": "Welcome to the blog page"
+    "title": "Blogs",
+    "description": "Welcome to the blog page",
+    "section-blog": {
+      "title": "My Blogs",
+      "title-2": "List of my blogs",
+      "not-found": "Blog not found"
+    }
   },
-  "projects-page": {
+  "project-page": {
     "title": "Projects",
-    "description": "Welcome to the projects page"
+    "description": "Welcome to the projects page",
+    "section-project": {
+      "title": "My Projects",
+      "title-2": "Showcase of my works",
+      "not-found": "Project not found"
+    }
   },
   "login-page": {
     "title": "Login",
@@ -26,6 +60,21 @@
       "title": "Dashboard",
       "description": "Welcome to the dashboard"
     }
+  },
+  "footer": {
+    "title": " Reach out to me on social media",
+    "description": "Pradnya Kuswara. All rights reserved."
+  },
+  "words": {
+    "name": "Kuswara",
+    "Hi": "Hi!",
+    "title": "Kuswara - Portfolio",
+    "full-name": "Pradnya Kuswara",
+    "full-name-2": "I Gusti Ngurah A Pradnya Kuswara",
+    "button": {
+      "next": "Next",
+      "previous": "Previous"
+    },
+    "search": "Search"
   }
-  
 }

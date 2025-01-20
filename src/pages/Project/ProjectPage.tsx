@@ -2,10 +2,14 @@ import React from 'react';
 import useProjectViewModel from './useProjectViewModel';
 import { HoverEffectProject } from '../../components/UI/card-hover-effect-project';
 import MetadataProjectPage from './MetadataProjectPage';
+import { useTranslation } from 'react-i18next';
 
 const ProjectPage: React.FC = () => {
   const { projects, totalPages, currentPage, onPageChange } =
     useProjectViewModel();
+
+  const { t } = useTranslation();
+
   return (
     <>
       <MetadataProjectPage />
@@ -15,10 +19,10 @@ const ProjectPage: React.FC = () => {
           data-aos="fade-right"
           data-aos-delay="100"
         >
-          My Projects
+          {t('project-page.section-project.title')}
         </h1>
         <p className="mt-2" data-aos="fade-right" data-aos-delay="100">
-          Showcase of my works{' '}
+          {t('project-page.section-project.title-2')}{' '}
         </p>
         <section data-aos="fade-up" data-aos-delay="100">
           {projects?.data.length > 0 ? (
@@ -26,7 +30,7 @@ const ProjectPage: React.FC = () => {
           ) : (
             <div className="text-center text-lg font-bold mt-10">
               {' '}
-              Project not found 😢{' '}
+              {t('project-page.section-project.not-found')} 😢{' '}
             </div>
           )}
 
@@ -39,14 +43,14 @@ const ProjectPage: React.FC = () => {
                   onClick={() => onPageChange(currentPage - 1)}
                   disabled={currentPage === 1}
                 >
-                  Previous
+                  {t('words.previous')}
                 </button>
                 <button
                   className="join-item btn btn-outline"
                   onClick={() => onPageChange(currentPage + 1)}
                   disabled={currentPage === totalPages}
                 >
-                  Next
+                  {t('words.previous')}
                 </button>
               </div>
             )}

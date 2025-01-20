@@ -1,7 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import HeroSection from './HeroSection';
 import MetadataHomePage from './MetadataHomePage';
 
 function HomePage() {
+  const { t } = useTranslation();
+
   return (
     <>
       <MetadataHomePage />
@@ -15,13 +18,10 @@ function HomePage() {
             <span className="text-xs">Featured</span>
           </div>
           <h1 className="text-3xl lg:text-4xl night:text-red font-extrabold">
-            I Like Building Things
+            {t('home-page.section-things.title')}
           </h1>
           <p className="leading-7 lg:leading-7 max-w-xl text-sm">
-            During my free time, I like to build things that I find interesting.
-            I like to learn new things and experiment with new technologies. I
-            like to build things that I can use in my daily life. I like to
-            build things that I can share with others.
+            {t('home-page.section-things.description')}
           </p>
         </section>
       </div>

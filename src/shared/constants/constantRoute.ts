@@ -18,7 +18,7 @@ export const ROUTE = {
     name: 'Blog Page',
   },
   project: {
-    locale: 'projects-page',
+    locale: 'project-page',
     path: 'project',
     fullPath: '/projects/',
     name: 'Project Page',

@@ -1,12 +1,14 @@
 import React from 'react';
 import useProjectViewModel from './useProjectViewModel';
 import { HoverEffectProject } from '../../components/UI/card-hover-effect-project';
+import MetadataProjectPage from './MetadataProjectPage';
 
 const ProjectPage: React.FC = () => {
   const { projects, totalPages, currentPage, onPageChange } =
     useProjectViewModel();
   return (
     <>
+      <MetadataProjectPage />
       <div className="min-h-screen py-36 lg:py-36 max-w-screen-xl lg:px-24 mx-4 lg:mx-auto">
         <h1
           className="text-4xl font-bold bg-gradient-to-r from-primary via-secondary to-accent inline-block text-transparent bg-clip-text "

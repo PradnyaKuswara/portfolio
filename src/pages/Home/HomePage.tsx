@@ -1,8 +1,10 @@
 import HeroSection from './HeroSection';
+import MetadataHomePage from './MetadataHomePage';
 
 function HomePage() {
   return (
     <>
+      <MetadataHomePage />
       <HeroSection></HeroSection>
       <div className="max-w-screen-lg mx-6 lg:mx-auto pt-0 pb-10 lg:ptb-20 lg:pb-20 2xl:pt-0  2xl:pb-10 ">
         <section

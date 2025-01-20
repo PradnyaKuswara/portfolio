@@ -4,6 +4,7 @@ import useGlobalLoading from '../../../hooks/useGlobalLoading';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { ROUTE } from '../../../shared/constants/constantRoute';
+import MetadataLoginPage from './MetadataLoginPage';
 
 const LoginPage: React.FC = () => {
   const { onLogin } = useLoginViewModel();
@@ -29,6 +30,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <>
+      <MetadataLoginPage />
       <div className="min-h-screen flex items-center justify-center">
         <div className="w-full max-w-md p-4 space-y-4  rounded-lg shadow-lg">
           <h1 className="text-2xl font-semibold text-center">Login</h1>

@@ -114,7 +114,7 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          'h-10 px-8 py-8 flex flex-row md:hidden items-center justify-between bg-white dark:bg-black text-black dark:text-white top-0 z-[10]  shadow-md border-b border-gray-200 dark:border-gray-700 w-full gap-4'
+          'h-10 px-4 lg:px-8 py-8 flex flex-row md:hidden items-center justify-between bg-white dark:bg-black text-black dark:text-white top-0 z-[40]  shadow-md border-b border-gray-200 dark:border-gray-700 w-screen gap-4'
         )}
         {...props}
       >
@@ -169,6 +169,26 @@ export const MobileSidebar = ({
             </svg>
           </label>
         </div>
+        <div>
+          <div className="dropdown dropdown-end">
+            <div className="flex items-center">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-8 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  />
+                </div>
+              </div>
+              <div className="text-xs">Admin</div>
+            </div>
+          </div>
+        </div>
+        
         <AnimatePresence>
           {open && (
             <motion.div
@@ -238,7 +258,7 @@ export const SidebarLink = ({
                   : 'inline-block',
                 opacity: animate ? (open ? 1 : 0) : 1,
               }}
-              className="text-secondary text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+              className="text-accent text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
             >
               {link.label}
             </motion.span>

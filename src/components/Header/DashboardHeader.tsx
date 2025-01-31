@@ -1,27 +1,8 @@
-import { useState } from 'react';
 import { useTheme } from '../../hooks/useTheme';
-import { useTranslation } from 'react-i18next';
-import useLocalStorage from '../../hooks/useLocalStorage';
-import { KEY } from '../../shared/constants/constantStorage';
 import PageSearchFilter from '../Filter/PageSearchFilter';
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
-  const { i18n } = useTranslation();
-  const storage = useLocalStorage();
-  const language = storage.getLocalStorage(KEY.localStorage.locale.name);
-
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
-
-  const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
-    storage.setLocalStorage(KEY.localStorage.locale.name, lang);
-    setDropdownOpen(false);
-  };
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!isDropdownOpen);
-  };
 
   return (
     <header className="hidden lg:flex fixed bg-white dark:bg-black text-black dark:text-white top-0 z-[10]  w-full  border-b border-gray-200 dark:border-gray-700">
@@ -31,52 +12,6 @@ const Header = () => {
         </div>
 
         <div className="flex items-center justify-normal gap-2 2xsm:gap-4 lg:w-full lg:justify-end xl:w-auto xl:justify-normal">
-          <div className={`relative ${isDropdownOpen ? 'focus-within' : ''}`}>
-            <button
-              className="btn btn-secondary btn-sm w-full flex items-center justify-between"
-              type="button"
-              onClick={toggleDropdown}
-            >
-              {language === 'id' ? (
-                <span className="flag flag-country-id"></span>
-              ) : language === 'ja' ? (
-                <span className="flag flag-country-jp"></span>
-              ) : (
-                <span className="flag flag-country-gb"></span>
-              )}
-
-              {language === 'id'
-                ? 'Bahasa Indonesia'
-                : language === 'ja'
-                ? '日本語'
-                : 'English'}
-            </button>
-
-            {isDropdownOpen && (
-              <ul className="absolute z-10 border bg-base-100 rounded shadow mt-2 min-w-full">
-                <li
-                  className="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
-                  onClick={() => changeLanguage('en')}
-                >
-                  <span className="flag flag-country-gb"></span> English
-                </li>
-                <li
-                  className="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
-                  onClick={() => changeLanguage('id')}
-                >
-                  <span className="flag flag-country-id"></span> Bahasa
-                  Indonesia
-                </li>
-                <li
-                  className="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
-                  onClick={() => changeLanguage('ja')}
-                >
-                  <span className="flag flag-country-jp"></span> 日本語
-                </li>
-              </ul>
-            )}
-          </div>
-
           <ul className="flex items-center gap-2 2xsm:gap-4">
             <div className="flex-col flex">
               <ul className="menu menu-horizontal">

@@ -1,35 +1,36 @@
 {
+  "logout": "Keluar",
   "home-page": {
     "title": "Beranda",
     "description": "Selamat datang di halaman beranda",
     "hero-section": {
       "title": "Kamu bisa memanggilku",
-      "description": "Saya adalah seorang pengembang web yang berbasis di Bali, Indonesia. Saya sangat menyukai pengembangan web dan senang mempelajari hal-hal baru. Saat ini, saya bekerja sebagai pengembang web freelance.",
+      "description": "Saya seorang pengembang web yang berbasis di Bali, Indonesia. Saya sangat antusias dengan pengembangan web dan senang belajar hal-hal baru. Saat ini, saya bekerja sebagai pengembang web lepas.",
       "cta": {
         "cta-1": "Portofolio Saya",
         "cta-2": "Tentang Saya"
       }
     },
     "section-things": {
-      "title-header": "Fitur",
-      "title": "Saya Suka Membangun Hal Baru",
-      "description": "Di waktu luang saya, saya suka membangun hal-hal yang menurut saya menarik. Saya suka mempelajari hal-hal baru dan bereksperimen dengan teknologi baru. Saya suka membangun hal-hal yang bisa saya gunakan dalam kehidupan sehari-hari. Saya suka membangun hal-hal yang bisa saya bagikan dengan orang lain."
+      "title-header": "Unggulan",
+      "title": "Saya Suka Membangun Sesuatu",
+      "description": "Di waktu luang saya, saya suka membangun sesuatu yang menarik. Saya suka belajar hal baru dan bereksperimen dengan teknologi terbaru. Saya suka membuat sesuatu yang berguna dalam kehidupan sehari-hari dan bisa dibagikan kepada orang lain."
     }
   },
   "about-page": {
     "title": "Tentang",
     "description": "Selamat datang di halaman tentang",
     "section-about": {
-      "description": "Saya adalah seorang pengembang web yang berbasis di Bali, Indonesia. Saya sangat menyukai pengembangan web dan senang mempelajari hal-hal baru. Saat ini, saya bekerja sebagai pengembang web freelance.",
-      "description-2": "Saya adalah seorang pengembang web yang berbasis di Bali, Indonesia. Saya sangat menyukai pengembangan web dan senang mempelajari hal-hal baru. Saat ini, saya bekerja sebagai pengembang web freelance."
+      "description": "Saya seorang pengembang web yang berbasis di Bali, Indonesia. Saya sangat antusias dengan pengembangan web dan senang belajar hal-hal baru. Saat ini, saya bekerja sebagai pengembang web lepas.",
+      "description-2": "Saya seorang pengembang web yang berbasis di Bali, Indonesia. Saya sangat antusias dengan pengembangan web dan senang belajar hal-hal baru. Saat ini, saya bekerja sebagai pengembang web lepas."
     },
     "section-certificate": {
       "title": "Sertifikat",
-      "description": "Saya memiliki sertifikat dalam pengembangan web dari Universitas Bali. Saya memiliki sertifikat dalam pengembangan web dari Universitas Bali."
+      "description": "Saya memiliki sertifikat dalam pengembangan web dari Universitas Bali."
     },
     "section-contact": {
       "title": "Kontak",
-      "description": "Hubungi saya jika Anda membutuhkan pendapat saya tentang pengembangan web. Saya dengan senang hati akan membantu! (temukan email saya di footer)"
+      "description": "Silakan hubungi saya jika Anda ingin berdiskusi tentang pengembangan web. Saya dengan senang hati akan membantu! (temukan email saya di bagian footer)"
     }
   },
   "blog-page": {
@@ -46,7 +47,7 @@
     "description": "Selamat datang di halaman proyek",
     "section-project": {
       "title": "Proyek Saya",
-      "title-2": "Karya-karya saya",
+      "title-2": "Kumpulan karya saya",
       "not-found": "Proyek tidak ditemukan"
     }
   },
@@ -60,11 +61,27 @@
     "main-dashboard": {
       "title": "Dasbor",
       "description": "Selamat datang di dasbor"
+    },
+    "certificate": {
+      "title": "Sertifikat",
+      "description": "Selamat datang di halaman sertifikat"
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Selamat datang di halaman blog"
+    },
+    "project-category": {
+      "title": "Kategori Proyek",
+      "description": "Selamat datang di halaman kategori proyek"
+    },
+    "project": {
+      "title": "Proyek",
+      "description": "Selamat datang di halaman proyek"
     }
   },
   "footer": {
-    "title": "Hubungi saya di media sosial",
-    "description": "Pradnya Kuswara. Hak cipta dilindungi undang-undang."
+    "title": "Hubungi saya melalui media sosial",
+    "description": "Pradnya Kuswara. Hak cipta dilindungi."
   },
   "words": {
     "name": "Kuswara",
@@ -77,5 +94,11 @@
       "previous": "Sebelumnya"
     },
     "search": "Cari"
+  },
+  "toast": {
+    "success": "Sukses: {{message}}",
+    "error": "Kesalahan: {{message}}",
+    "warning": "Peringatan: {{message}}",
+    "info": "Info: {{message}}"
   }
 }

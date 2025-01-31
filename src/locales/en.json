@@ -1,4 +1,5 @@
 {
+  "logout": "Logout",
   "home-page": {
     "title": "Home",
     "description": "Welcome to the home page",
@@ -60,6 +61,22 @@
     "main-dashboard": {
       "title": "Dashboard",
       "description": "Welcome to the dashboard"
+    },
+    "certificate": {
+      "title": "Certificate",
+      "description": "Welcome to the certificate page"
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Welcome to the blog page"
+    },
+    "project-category": {
+      "title": "Project Category",
+      "description": "Welcome to the project category page"
+    },
+    "project": {
+      "title": "Project",
+      "description": "Welcome to the project page"
     }
   },
   "footer": {
@@ -77,5 +94,11 @@
       "previous": "Previous"
     },
     "search": "Search"
+  },
+  "toast": {
+    "success": "Success: {{message}}",
+    "error": "Error: {{message}}",
+    "warning": "Warning: {{message}}",
+    "info": "Info: {{message}}"
   }
 }

@@ -34,7 +34,7 @@ export const ROUTE = {
     path: 'admin',
     fullPath: '/admin/',
     name: 'Admin Page',
-    icon: 'admin',
+    icon: 'shield_person',
     main: {
       keys: ['admin', 'dashboard'],
       locale: 'admin-page.main-dashboard',
@@ -43,6 +43,42 @@ export const ROUTE = {
       name: 'Dashboard Page',
       icon: 'dashboard',
       description: 'Dashboard page for admin',
-    }
+    },
+    certificate: {
+      keys: ['admin', 'certificate'],
+      locale: 'admin-page.certificate',
+      path: 'certificate',
+      fullPath: '/admin/certificate/',
+      name: 'Certificate Page',
+      icon: 'dataset',
+      description: 'Certificate page for admin',
+    },
+    blog: {
+      keys: ['admin', 'blog'],
+      locale: 'admin-page.blog',
+      path: 'blog',
+      fullPath: '/admin/blog/',
+      name: 'Blog Page',
+      icon: 'article',
+      description: 'Blog page for admin',
+    },
+    projectCategory: {
+      keys: ['admin', 'project-category'],
+      locale: 'admin-page.project-category',
+      fullPath: '/admin/project-category/',
+      name: 'Project Category Page',
+      icon: 'category',
+      description: 'Project Category page for admin',
+    },
+    project: {
+      keys: ['admin', 'project'],
+      locale: 'admin-page.project',
+      path: 'project',
+      fullPath: '/admin/project/',
+      name: 'Project Page',
+      icon: 'view_module',
+      description: 'Project page for admin',
+    },
+
   }
 }

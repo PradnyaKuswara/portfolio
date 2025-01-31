@@ -31,3 +31,19 @@ export const login = async ({ storage, insertParams }: loginParams) => {
 
   return res;
 }
+
+export const logout = async ({ storage }: fetchParams) => {
+  const response = await fetch(import.meta.env.VITE_API_URL + '/logout/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${storage.getLocalStorage(KEY.localStorage.auth.name)}`
+    }
+  })
+
+  const res = await handleResponse(response);
+
+  storage.removeLocalStorage(KEY.localStorage.auth.name)
+
+  return res;
+}

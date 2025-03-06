@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import SidebarItem from './SidebarItem';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { useConfirmationModal } from '../../hooks/useConfirmationModal';
+import { useConfirmationModal } from '../Modal/hooks/useConfirmationModal';
 import useGlobalLoading from '../../hooks/useGlobalLoading';
 import { logout } from '../../rest/AuthRest';
 import useLocalStorage from '../../hooks/useLocalStorage';
@@ -43,7 +43,7 @@ const SidebarContainer: React.FC = () => {
     <div
       className={`relative h-full ${
         open ? 'w-64' : 'w-16'
-      } transition-all duration-300`}  
+      } transition-all duration-300`}
     >
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10">

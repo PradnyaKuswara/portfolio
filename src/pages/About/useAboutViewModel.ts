@@ -6,7 +6,10 @@ const useAboutViewModel = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const itemsPerPage = 6;
 
-  const { data: certificates, mutate } = useSWR({ currentPage, itemsPerPage }, getAll);
+  const { data: certificates, mutate } = useSWR(
+    ['fetch-certificates', currentPage, itemsPerPage],
+    ([, page, limit]) => getAll({ currentPage: page, itemsPerPage: limit })
+  );
 
   const totalPages = certificates ? Math.ceil(certificates.total / itemsPerPage) : 1;
 
@@ -20,7 +23,7 @@ const useAboutViewModel = () => {
     currentPage,
     onPageChange,
     mutate,
-  }
-}
+  };
+};
 
-export default useAboutViewModel
+export default useAboutViewModel;

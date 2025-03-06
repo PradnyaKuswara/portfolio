@@ -1,40 +1,35 @@
 import React, { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
-import { UserAtom } from '../shared/atoms/atom';
-import { ROUTE } from '../shared/constants/constantRoute';
 import useGlobalLoading from '../hooks/useGlobalLoading';
-import { Navigate } from 'react-router-dom';
 import useUserData from '../hooks/useUserData';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { ROUTE } from '../shared/constants/constantRoute';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const { userData, isValidating } = useUserData();
-  const [, setUser] = useRecoilState(UserAtom);
   const [, setLoading] = useGlobalLoading();
-
-  useEffect(() => {
-    console.log('ProtectedRoute rendered');
-    if (userData) {
-      setUser(userData);
-    }
-  }, [userData, setUser]);
+  const { userData, isValidating, error, refetch } = useUserData();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     setLoading(isValidating);
   }, [isValidating, setLoading]);
 
-  if (isValidating) {
-    return null;
-  }
+  useEffect(() => {
+    refetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]);
 
-  if (!userData) {
-    return <Navigate to={ ROUTE.login.fullPath } />;
-  }
+  useEffect(() => {
+    if (error) {
+      navigate(ROUTE.login.fullPath, { replace: true });
+    }
+  }, [error, navigate]);
 
-  return children;
+  return userData ? children : null;
 };
 
 export default ProtectedRoute;

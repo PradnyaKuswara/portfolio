@@ -7,7 +7,10 @@ const useBlogViewModel = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const itemsPerPage = 6;
 
-  const { data: blogs, mutate } = useSWR({ currentPage, itemsPerPage, searchQuery }, getAll);
+  const { data: blogs, mutate } = useSWR(
+    ['fetch-blogs', currentPage, itemsPerPage, searchQuery],
+    ([, page, limit, search]) => getAll({ currentPage: page, itemsPerPage: limit, searchQuery: search })
+  );
 
   const totalPages = blogs ? Math.ceil(blogs.total / itemsPerPage) : 1;
 

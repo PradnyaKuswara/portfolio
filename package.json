@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.10.6",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@lottiefiles/react-lottie-player": "^3.6.0",
@@ -18,8 +19,9 @@
     "aos": "^2.3.4",
     "clsx": "^2.1.1",
     "devicons-react": "^1.4.0",
-    "framer-motion": "^11.18.1",
+    "framer-motion": "^11.18.2",
     "mini-svg-data-uri": "^1.4.4",
+    "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
@@ -27,6 +29,7 @@
     "react-hot-toast": "^2.5.1",
     "react-i18next": "^15.4.0",
     "react-router-dom": "^7.1.2",
+    "react-select": "^5.10.1",
     "recoil": "^0.7.7",
     "swr": "^2.3.0",
     "tailwind-merge": "^2.6.0"

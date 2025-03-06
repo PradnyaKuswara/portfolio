@@ -6,7 +6,10 @@ const useProjectViewModel = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const itemsPerPage = 6;
 
-  const { data: projects } = useSWR({ currentPage, itemsPerPage }, getAll);
+  const { data: projects, mutate } = useSWR(
+    ['fetch-projects', currentPage, itemsPerPage],
+    ([, page, limit]) => getAll({ currentPage: page, itemsPerPage: limit })
+  );
 
   const totalPages = projects ? Math.ceil(projects.total / itemsPerPage) : 1;
 
@@ -19,6 +22,7 @@ const useProjectViewModel = () => {
     totalPages,
     currentPage,
     onPageChange,
+    mutate
   }
 }
 

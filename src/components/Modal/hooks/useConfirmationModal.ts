@@ -1,5 +1,5 @@
 import { useSetRecoilState } from 'recoil';
-import { ConfirmationModalAtom } from '../shared/atoms/atom';
+import { ConfirmationModalAtom } from '../../../shared/atoms/atom';
 
 export const useConfirmationModal = () => {
   const setModalState = useSetRecoilState(ConfirmationModalAtom);

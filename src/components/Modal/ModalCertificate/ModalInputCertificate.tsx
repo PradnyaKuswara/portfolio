@@ -1,18 +1,9 @@
 import React from 'react';
 import useModalInputCertificate from '../hooks/useModalInputCertificate';
-import { Box, Modal, Typography } from '@mui/material';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+import Modal from '@mui/joy/Modal';
+import ModalClose from '@mui/joy/ModalClose';
+import Typography from '@mui/joy/Typography';
+import Sheet from '@mui/joy/Sheet';
 
 const ModalInputCertificate: React.FC = () => {
   const { modalState, closeModal } = useModalInputCertificate();
@@ -21,19 +12,31 @@ const ModalInputCertificate: React.FC = () => {
 
   return (
     <Modal
+      aria-labelledby="modal-title"
+      aria-describedby="modal-desc"
       open={modalState.isOpen}
       onClose={closeModal}
-      aria-labelledby="parent-modal-title"
-      aria-describedby="parent-modal-description"
+      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
-      <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          Text in a modal
+      <Sheet
+        variant="outlined"
+        sx={{ maxWidth: 500, borderRadius: 'md', p: 3, boxShadow: 'lg' }}
+      >
+        <ModalClose variant="plain" sx={{ m: 1 }} />
+        <Typography
+          component="h2"
+          id="modal-title"
+          level="h4"
+          textColor="inherit"
+          sx={{ fontWeight: 'lg', mb: 1 }}
+        >
+          This is the modal title
         </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+        <Typography id="modal-desc" textColor="text.tertiary">
+          Make sure to use <code>aria-labelledby</code> on the modal dialog with
+          an optional <code>aria-describedby</code> attribute.
         </Typography>
-      </Box>
+      </Sheet>
     </Modal>
   );
 };

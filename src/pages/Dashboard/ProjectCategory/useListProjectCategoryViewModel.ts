@@ -1,20 +1,20 @@
 import React, { useCallback } from 'react'
 import useSWR from 'swr';
-import { deleteCertificate, getAllProtected } from '../../../rest/CertificateRest';
+import { deleteProjectCategory, getAllProtected } from '../../../rest/ProjectCategory';
 
-const useListCertificateViewModel = () => {
+const useListProjectCategoryViewModel = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [searchQuery, setSearchQuery] = React.useState('');
   const itemsPerPage = 6;
 
-  const { data: certificates, isValidating, mutate } = useSWR(
-    ['fetch-certificates', currentPage, itemsPerPage, searchQuery],
+  const { data: projectCategories, isValidating, mutate } = useSWR(
+    ['fetch-project-categories', currentPage, itemsPerPage, searchQuery],
     ([, page, limit, query]) =>
       getAllProtected({ currentPage: page, itemsPerPage: limit, searchQuery: query }),
     { revalidateOnFocus: false, revalidateOnReconnect: false }
   );
 
-  const totalPages = certificates ? Math.ceil(certificates.total / itemsPerPage) : 1;
+  const totalPages = projectCategories ? Math.ceil(projectCategories.total / itemsPerPage) : 1;
 
   const onPageChange = (newPage: number) => {
     setCurrentPage(newPage);
@@ -31,7 +31,7 @@ const useListCertificateViewModel = () => {
 
   const onDelete = async (uuid: string) => {
     try {
-      const response = await deleteCertificate(uuid);
+      const response = await deleteProjectCategory(uuid);
       return response
     }
     catch (error) {
@@ -39,9 +39,8 @@ const useListCertificateViewModel = () => {
     }
   }
 
-
   return {
-    certificates,
+    projectCategories,
     totalPages,
     currentPage,
     onPageChange,
@@ -50,7 +49,6 @@ const useListCertificateViewModel = () => {
     isValidating,
     onDelete
   };
-
 }
 
-export default useListCertificateViewModel
+export default useListProjectCategoryViewModel

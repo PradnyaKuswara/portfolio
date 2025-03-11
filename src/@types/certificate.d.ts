@@ -1,6 +1,6 @@
 declare namespace CertificateNamespace {
   type bodyType = {
-    uuid: string;
+    uuid?: string;
     name: string;
     organization: string;
     month_obtained: string;
@@ -22,8 +22,8 @@ declare namespace CertificateNamespace {
     year_expired: string,
     url: string,
     description: string,
-    createdAt: Date,
-    updatedAt: Date
+    createdAt: string,
+    updatedAt: string
   }
 }
 

@@ -10,9 +10,10 @@ interface TextInputProps {
     isLabel: boolean;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
+  sx?: React.CSSProperties;
 }
 
-const TextInput: React.FC<TextInputProps> = ({ props }) => {
+const TextInput: React.FC<TextInputProps> = ({ props, sx }) => {
   const {
     field,
     type,
@@ -32,10 +33,12 @@ const TextInput: React.FC<TextInputProps> = ({ props }) => {
       )}
       <input
         {...field}
+        value={field.value || ''}
         onChange={onChange ? onChange : field.onChange}
         type={type}
         placeholder={placeHolder || 'Enter your text'}
         className="input input-sm rounded-[0.2rem] input-bordered text-xs"
+        style={sx}
       />
       <p className="text-xs text-error mt-2">{fieldState.error?.message}</p>
     </div>

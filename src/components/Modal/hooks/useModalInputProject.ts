@@ -1,18 +1,22 @@
-import CertificateNamespace from '../../../@types/certificate';
-import { ModalInputCertificateAtom } from '../../../shared/atoms/atom';
+import ProjectNamespace from '../../../@types/project';
+import useGlobalLoading from '../../../hooks/useGlobalLoading';
+import { ModalInputProjectAtom } from '../../../shared/atoms/atom';
 import { useRecoilState } from 'recoil';
 
-const useModalInputCertificate = () => {
-  const [modalState, setModalState] = useRecoilState(ModalInputCertificateAtom);
+const useModalInputProject = () => {
+  const [modalState, setModalState] = useRecoilState(ModalInputProjectAtom);
+  const [, setLoading] = useGlobalLoading();
   const openModal = () => {
+    setLoading(true);
     setModalState({
       isOpen: true,
       isEdit: false,
       data: null
     });
+    setLoading(false);
   };
 
-  const editModal = (data: CertificateNamespace.Certificate) => {
+  const editModal = (data: ProjectNamespace.Project) => {
     setModalState({
       isOpen: true,
       isEdit: true,
@@ -39,4 +43,4 @@ const useModalInputCertificate = () => {
   };
 }
 
-export default useModalInputCertificate
+export default useModalInputProject

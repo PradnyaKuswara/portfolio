@@ -1,6 +1,8 @@
 import { atom } from "recoil";
 import moment from "moment";
 import CertificateNamespace from "../../@types/certificate";
+import ProjectCategoryNamespace from "../../@types/project-category";
+import ProjectNamespace from "../../@types/project";
 
 export const GlobalLoadingAtom = atom({
   key: "GlobalLoadingAtom",
@@ -31,10 +33,29 @@ export const GlobalFilterAtom = atom({
   },
 });
 
-export const ModalInputCertificateAtom = atom<{ isOpen: boolean; data: CertificateNamespace.Certificate | null }>({
+export const ModalInputCertificateAtom = atom<{ isOpen: boolean; isEdit: boolean; data: CertificateNamespace.Certificate | null }>({
   key: 'ModalInputCertificate',
   default: {
     isOpen: false,
+    isEdit: false,
+    data: null,
+  },
+});
+
+export const ModalInputProjectCategoryAtom = atom<{ isOpen: boolean; isEdit: boolean; data: ProjectCategoryNamespace.ProjectCategory | null }>({
+  key: 'ModalInputProjectCategoryAtom',
+  default: {
+    isOpen: false,
+    isEdit: false,
+    data: null,
+  },
+});
+
+export const ModalInputProjectAtom = atom<{ isOpen: boolean; isEdit: boolean; data: ProjectNamespace.Project | null }>({
+  key: 'ModalInputProjectAtom',
+  default: {
+    isOpen: false,
+    isEdit: false,
     data: null,
   },
 });

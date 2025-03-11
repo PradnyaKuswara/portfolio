@@ -1,14 +1,14 @@
 import React from 'react';
-import CertificateNamespace from '../../../@types/certificate';
+import ProjectNamespace from '../../../@types/project';
 import { convertDateTime } from '../../../helpers/date';
 
-interface CertificateTableProps {
-  data: CertificateNamespace.Certificate[];
-  editModal: (data: CertificateNamespace.Certificate) => void;
-  handleDelete: (uuid: string) => void;
+interface ProjectTableProps {
+  data: ProjectNamespace.Project[];
+  editModal: (data: ProjectNamespace.Project) => void;
+  handleDelete: (slug: string) => void;
 }
 
-const CertificateTable: React.FC<CertificateTableProps> = ({
+const ProjectTable: React.FC<ProjectTableProps> = ({
   data,
   editModal,
   handleDelete,
@@ -18,14 +18,8 @@ const CertificateTable: React.FC<CertificateTableProps> = ({
       <thead>
         <tr>
           <th>No</th>
-          <th>Name</th>
-          <th>Organization</th>
-          <th>Month Obtained</th>
-          <th>Year Obtained</th>
-          <th>Month Expired</th>
-          <th>Year Expired</th>
-          <th>Url</th>
-          <th>Description</th>
+          <th>Title</th>
+          <th>Category</th>
           <th>Created Date</th>
           <th>Updated Date</th>
           <th>Action</th>
@@ -36,14 +30,8 @@ const CertificateTable: React.FC<CertificateTableProps> = ({
           data.map((item, index) => (
             <tr key={item.id}>
               <td>{index + 1}</td>
-              <td>{item.name}</td>
-              <td>{item.organization}</td>
-              <td>{item.month_obtained}</td>
-              <td>{item.year_obtained}</td>
-              <td>{item.month_expired}</td>
-              <td>{item.year_expired}</td>
-              <td>{item.url}</td>
-              <td>{item.description}</td>
+              <td>{item.title}</td>
+              <td>{item.ProjectCategory.name}</td>
               <td>{convertDateTime(item.createdAt)}</td>
               <td>{convertDateTime(item.updatedAt)}</td>
               <td className="flex gap-2">
@@ -55,7 +43,7 @@ const CertificateTable: React.FC<CertificateTableProps> = ({
                 </button>
                 <button
                   className="btn btn-danger btn-sm"
-                  onClick={() => handleDelete(item.uuid)}
+                  onClick={() => handleDelete(item.slug)}
                 >
                   Delete
                 </button>
@@ -74,4 +62,4 @@ const CertificateTable: React.FC<CertificateTableProps> = ({
   );
 };
 
-export default CertificateTable;
+export default ProjectTable;

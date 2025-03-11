@@ -11,6 +11,7 @@ interface TextAreaInputProps {
 
 const TextAreaInput: React.FC<TextAreaInputProps> = (props) => {
   const { field, placeHolder, label, fieldState, isLabel = false } = props;
+  
   return (
     <div className="form-control w-full">
       {isLabel && (
@@ -27,12 +28,17 @@ const TextAreaInput: React.FC<TextAreaInputProps> = (props) => {
 
       <Textarea
         placeholder={placeHolder || 'Enter your text'}
-        className="input input-sm rounded-[0.2rem] input-bordered text-sm"
-        required
-        sx={{ mb: 1 }}
+        className="input input-sm !rounded-[0.2rem] input-bordered !text-xs "
+        sx={{
+          mb: 1,
+          width: '100%',
+          height: '10rem', // Set the width to control the number of columns
+        }}
         onChange={field?.onChange}
         value={field?.value}
         onBlur={field?.onBlur}
+        minRows={100}
+        maxRows={200}
       />
       <p className="text-sm text-error mt-2">{fieldState?.error?.message}</p>
     </div>

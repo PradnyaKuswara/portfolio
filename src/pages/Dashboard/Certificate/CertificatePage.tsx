@@ -3,19 +3,38 @@ import CertificateTable from './CertificateTable';
 import useListCertificateViewModel from './useListCertificateViewModel';
 import useGlobalLoading from '../../../hooks/useGlobalLoading';
 import useModalInputCertificate from '../../../components/Modal/hooks/useModalInputCertificate';
+import toast from 'react-hot-toast';
 
 const CertificatePage: React.FC = () => {
-  const { certificates, isValidating } = useListCertificateViewModel();
-  const { openModal } = useModalInputCertificate();
-  const [, setLoading] = useGlobalLoading();
+  const { certificates, isValidating, onDelete, refetch } =
+    useListCertificateViewModel();
+  const { openModal, editModal } = useModalInputCertificate();
+  const [loading, setLoading] = useGlobalLoading();
 
   useEffect(() => {
     setLoading(isValidating);
   }, [isValidating, setLoading]);
 
+  const handleDelete = async (uuid: string) => {
+    if (loading) return;
+    setLoading(true);
+
+    const res = await onDelete(uuid);
+
+    if (res instanceof Error) {
+      setLoading(false);
+      toast.error(res.message);
+      return;
+    }
+
+    setLoading(false);
+    toast.success('Delete certificate success');
+    refetch();
+  };
+
   return (
     <>
-      <div className="card shadow-lg border border-spacing-1 border-neutral-content rounded-sm mt-2">
+      <div className="card shadow-sm border border-spacing-1 border-neutral-content rounded-sm mt-2">
         <div className="card-body">
           <div className="flex justify-between items-center">
             <div className="w-8/12">
@@ -28,9 +47,9 @@ const CertificatePage: React.FC = () => {
                   className="h-4 w-4 opacity-70"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   />
                 </svg>
               </label>
@@ -48,7 +67,11 @@ const CertificatePage: React.FC = () => {
             </div>
           </div>
           <div className="overflow-x-auto">
-            <CertificateTable data={certificates?.data} />
+            <CertificateTable
+              data={certificates?.data}
+              editModal={editModal}
+              handleDelete={handleDelete}
+            />
           </div>
         </div>
       </div>

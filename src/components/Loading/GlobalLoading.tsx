@@ -8,7 +8,7 @@ const GlobalLoading: React.FC = () => {
   return (
     <>
       {loading ? (
-        <div className="fixed top-0 left-0 z-50 w-screen h-screen flex items-center justify-center bg-black bg-opacity-50 ">
+        <div className="fixed top-0 left-0 z-[9999999] w-screen h-screen flex items-center justify-center bg-black bg-opacity-20 ">
           <span className="loading loading-spinner text-primary loading-lg"></span>
         </div>
       ) : null}

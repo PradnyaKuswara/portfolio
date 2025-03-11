@@ -1,9 +1,9 @@
-import CertificateNamespace from '../../../@types/certificate';
-import { ModalInputCertificateAtom } from '../../../shared/atoms/atom';
+import ProjectCategoryNamespace from '../../../@types/project-category';
+import { ModalInputProjectCategoryAtom } from '../../../shared/atoms/atom';
 import { useRecoilState } from 'recoil';
 
-const useModalInputCertificate = () => {
-  const [modalState, setModalState] = useRecoilState(ModalInputCertificateAtom);
+const useModalInputProjectCategory = () => {
+  const [modalState, setModalState] = useRecoilState(ModalInputProjectCategoryAtom);
   const openModal = () => {
     setModalState({
       isOpen: true,
@@ -12,7 +12,7 @@ const useModalInputCertificate = () => {
     });
   };
 
-  const editModal = (data: CertificateNamespace.Certificate) => {
+  const editModal = (data: ProjectCategoryNamespace.ProjectCategory) => {
     setModalState({
       isOpen: true,
       isEdit: true,
@@ -39,4 +39,4 @@ const useModalInputCertificate = () => {
   };
 }
 
-export default useModalInputCertificate
+export default useModalInputProjectCategory

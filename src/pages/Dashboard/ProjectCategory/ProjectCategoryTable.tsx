@@ -1,14 +1,14 @@
 import React from 'react';
-import CertificateNamespace from '../../../@types/certificate';
+import ProjectCategoryNamespace from '../../../@types/project-category';
 import { convertDateTime } from '../../../helpers/date';
 
-interface CertificateTableProps {
-  data: CertificateNamespace.Certificate[];
-  editModal: (data: CertificateNamespace.Certificate) => void;
+interface ProjectCategoryTableProps {
+  data: ProjectCategoryNamespace.ProjectCategory[];
+  editModal: (data: ProjectCategoryNamespace.ProjectCategory) => void;
   handleDelete: (uuid: string) => void;
 }
 
-const CertificateTable: React.FC<CertificateTableProps> = ({
+const ProjectCategoryTable: React.FC<ProjectCategoryTableProps> = ({
   data,
   editModal,
   handleDelete,
@@ -19,13 +19,6 @@ const CertificateTable: React.FC<CertificateTableProps> = ({
         <tr>
           <th>No</th>
           <th>Name</th>
-          <th>Organization</th>
-          <th>Month Obtained</th>
-          <th>Year Obtained</th>
-          <th>Month Expired</th>
-          <th>Year Expired</th>
-          <th>Url</th>
-          <th>Description</th>
           <th>Created Date</th>
           <th>Updated Date</th>
           <th>Action</th>
@@ -37,13 +30,7 @@ const CertificateTable: React.FC<CertificateTableProps> = ({
             <tr key={item.id}>
               <td>{index + 1}</td>
               <td>{item.name}</td>
-              <td>{item.organization}</td>
-              <td>{item.month_obtained}</td>
-              <td>{item.year_obtained}</td>
-              <td>{item.month_expired}</td>
-              <td>{item.year_expired}</td>
-              <td>{item.url}</td>
-              <td>{item.description}</td>
+
               <td>{convertDateTime(item.createdAt)}</td>
               <td>{convertDateTime(item.updatedAt)}</td>
               <td className="flex gap-2">
@@ -74,4 +61,4 @@ const CertificateTable: React.FC<CertificateTableProps> = ({
   );
 };
 
-export default CertificateTable;
+export default ProjectCategoryTable;

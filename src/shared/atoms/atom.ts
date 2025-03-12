@@ -3,6 +3,7 @@ import moment from "moment";
 import CertificateNamespace from "../../@types/certificate";
 import ProjectCategoryNamespace from "../../@types/project-category";
 import ProjectNamespace from "../../@types/project";
+import ArticleNamespace from "../../@types/article";
 
 export const GlobalLoadingAtom = atom({
   key: "GlobalLoadingAtom",
@@ -53,6 +54,15 @@ export const ModalInputProjectCategoryAtom = atom<{ isOpen: boolean; isEdit: boo
 
 export const ModalInputProjectAtom = atom<{ isOpen: boolean; isEdit: boolean; data: ProjectNamespace.Project | null }>({
   key: 'ModalInputProjectAtom',
+  default: {
+    isOpen: false,
+    isEdit: false,
+    data: null,
+  },
+});
+
+export const ModalInputBlogAtom = atom<{ isOpen: boolean; isEdit: boolean; data: ArticleNamespace.Article | null }>({
+  key: 'ModalInputBlogAtom',
   default: {
     isOpen: false,
     isEdit: false,

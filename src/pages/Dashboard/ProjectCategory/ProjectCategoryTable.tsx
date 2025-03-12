@@ -14,7 +14,7 @@ const ProjectCategoryTable: React.FC<ProjectCategoryTableProps> = ({
   handleDelete,
 }) => {
   return (
-    <table className="table">
+    <table className="table table-bordered table-compact table-sm">
       <thead>
         <tr>
           <th>No</th>

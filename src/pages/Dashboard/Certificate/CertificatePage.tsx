@@ -4,10 +4,21 @@ import useListCertificateViewModel from './useListCertificateViewModel';
 import useGlobalLoading from '../../../hooks/useGlobalLoading';
 import useModalInputCertificate from '../../../components/Modal/hooks/useModalInputCertificate';
 import toast from 'react-hot-toast';
+import { Pagination } from '@mui/material';
 
 const CertificatePage: React.FC = () => {
-  const { certificates, isValidating, onDelete, refetch } =
-    useListCertificateViewModel();
+  const {
+    certificates,
+    isValidating,
+    onDelete,
+    refetch,
+    startIndex,
+    endIndex,
+    currentPage,
+    onPageChange,
+    totalPages,
+    onSearch,
+  } = useListCertificateViewModel();
   const { openModal, editModal } = useModalInputCertificate();
   const [loading, setLoading] = useGlobalLoading();
 
@@ -39,7 +50,16 @@ const CertificatePage: React.FC = () => {
           <div className="flex justify-between items-center">
             <div className="w-8/12">
               <label className="input input-bordered flex items-center gap-2 input-sm rounded-sm">
-                <input type="text" className="grow" placeholder="Search" />
+                <input
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      onSearch(e.currentTarget.value);
+                    }
+                  }}
+                  type="text"
+                  className="grow"
+                  placeholder="Search"
+                />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 16 16"
@@ -72,6 +92,25 @@ const CertificatePage: React.FC = () => {
               editModal={editModal}
               handleDelete={handleDelete}
             />
+          </div>
+          <div className="flex justify-between items-center mt-2">
+            <div>
+              <span className="text-xs text-primary-content">
+                Showing {startIndex + 1}-{endIndex} of {certificates?.total}{' '}
+                entries
+              </span>
+            </div>
+            <div>
+              <Pagination
+                count={totalPages}
+                page={currentPage}
+                variant="outlined"
+                shape="rounded"
+                defaultPage={currentPage}
+                color="primary"
+                onChange={(_, page) => onPageChange(page)}
+              />
+            </div>
           </div>
         </div>
       </div>

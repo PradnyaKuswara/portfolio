@@ -1,6 +1,7 @@
 import { useRecoilValue } from 'recoil';
 import {
   ConfirmationModalAtom,
+  ModalInputBlogAtom,
   ModalInputCertificateAtom,
   ModalInputProjectAtom,
   ModalInputProjectCategoryAtom,
@@ -23,6 +24,8 @@ const ModalInputProject = React.lazy(
   () => import('./ModalProject/ModalInputProject')
 );
 
+const ModalInputBlog = React.lazy(() => import('./ModalBlog/ModalInputBlog'));
+
 export default function ModalContainer() {
   const valueModalConfirmation = useRecoilValue(ConfirmationModalAtom);
   const valueModalInputCertificate = useRecoilValue(ModalInputCertificateAtom);
@@ -30,23 +33,34 @@ export default function ModalContainer() {
     ModalInputProjectCategoryAtom
   );
   const valueModalInputProject = useRecoilValue(ModalInputProjectAtom);
+  const valueModalInputBlog = useRecoilValue(ModalInputBlogAtom);
+
+  const Loading = () => (
+    <div className="fixed top-0 left-0 z-[9999999] w-screen h-screen flex items-center justify-center bg-black bg-opacity-20 ">
+      <span className="loading loading-spinner text-primary loading-lg"></span>
+    </div>
+  );
 
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         {valueModalConfirmation.isOpen && <ModalConfirmation />}
       </Suspense>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         {valueModalInputCertificate.isOpen && <ModalInputCertificate />}
       </Suspense>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         {valueModalInputProjectCategory.isOpen && <ModalInputProjectCategory />}
       </Suspense>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         {valueModalInputProject.isOpen && <ModalInputProject />}
+      </Suspense>
+
+      <Suspense fallback={<Loading />}>
+        {valueModalInputBlog.isOpen && <ModalInputBlog />}
       </Suspense>
     </>
   );

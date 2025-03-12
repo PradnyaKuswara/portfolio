@@ -1,11 +1,11 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import useSWR from 'swr';
 import { deleteCertificate, getAllProtected } from '../../../rest/CertificateRest';
 
 const useListCertificateViewModel = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [searchQuery, setSearchQuery] = React.useState('');
-  const itemsPerPage = 6;
+  const itemsPerPage = 10;
 
   const { data: certificates, isValidating, mutate } = useSWR(
     ['fetch-certificates', currentPage, itemsPerPage, searchQuery],
@@ -39,6 +39,13 @@ const useListCertificateViewModel = () => {
     }
   }
 
+  const startIndex = useMemo(() => {
+    return (currentPage - 1) * itemsPerPage;
+  }, [currentPage, itemsPerPage]);
+
+  const endIndex = useMemo(() => {
+    return Math.min(startIndex + itemsPerPage, certificates?.total || 0);
+  }, [startIndex, itemsPerPage, certificates]);
 
   return {
     certificates,
@@ -48,7 +55,9 @@ const useListCertificateViewModel = () => {
     refetch,
     onSearch,
     isValidating,
-    onDelete
+    onDelete,
+    startIndex,
+    endIndex
   };
 
 }

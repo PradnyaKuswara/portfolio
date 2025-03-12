@@ -1,9 +1,10 @@
-import ProjectNamespace from '../../../@types/project';
-import { ModalInputProjectAtom } from '../../../shared/atoms/atom';
+import { ModalInputBlogAtom } from '../../../shared/atoms/atom';
 import { useRecoilState } from 'recoil';
+import ArticleNamespace from '../../../@types/article';
 
-const useModalInputProject = () => {
-  const [modalState, setModalState] = useRecoilState(ModalInputProjectAtom);
+const useModalInputBlog = () => {
+  const [modalState, setModalState] = useRecoilState(ModalInputBlogAtom);
+
   const openModal = () => {
     setModalState({
       isOpen: true,
@@ -12,7 +13,7 @@ const useModalInputProject = () => {
     });
   };
 
-  const editModal = (data: ProjectNamespace.Project) => {
+  const editModal = (data: ArticleNamespace.Article) => {
     setModalState({
       isOpen: true,
       isEdit: true,
@@ -39,4 +40,4 @@ const useModalInputProject = () => {
   };
 }
 
-export default useModalInputProject
+export default useModalInputBlog

@@ -1,20 +1,20 @@
-import React, { useCallback } from 'react'
+import React from 'react'
+import { deleteArticle, getAllProtected, updateStatusArticle } from '../../../rest/BlogRest';
 import useSWR from 'swr';
-import { deleteProject, getAllProtected } from '../../../rest/ProjectRest';
 
-const useListProjectViewModel = () => {
+const useListArticleViewModel = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [searchQuery, setSearchQuery] = React.useState('');
   const itemsPerPage = 6;
 
-  const { data: projects, isValidating, mutate } = useSWR(
-    ['fetch-projects', currentPage, itemsPerPage, searchQuery],
+  const { data: articles, isValidating, mutate } = useSWR(
+    ['fetch-articles', currentPage, itemsPerPage, searchQuery],
     ([, page, limit, query]) =>
       getAllProtected({ currentPage: page, itemsPerPage: limit, searchQuery: query }),
     { revalidateOnFocus: false, revalidateOnReconnect: false }
   );
 
-  const totalPages = projects ? Math.ceil(projects.total / itemsPerPage) : 1;
+  const totalPages = articles ? Math.ceil(articles.total / itemsPerPage) : 1;
 
   const onPageChange = (newPage: number) => {
     setCurrentPage(newPage);
@@ -24,14 +24,24 @@ const useListProjectViewModel = () => {
     setSearchQuery(query);
   };
 
-  const refetch = useCallback(() => {
+  const refetch = React.useCallback(() => {
     mutate();
   }
     , [mutate]);
 
   const onDelete = async (slug: string) => {
     try {
-      const response = await deleteProject(slug);
+      const response = await deleteArticle(slug);
+      return response
+    }
+    catch (error) {
+      return error
+    }
+  }
+
+  const onUpdateStatus = async (slug: string) => {
+    try {
+      const response = await updateStatusArticle(slug);
       return response
     }
     catch (error) {
@@ -44,11 +54,12 @@ const useListProjectViewModel = () => {
   }, [currentPage, itemsPerPage]);
 
   const endIndex = React.useMemo(() => {
-    return Math.min(startIndex + itemsPerPage, projects?.total || 0);
-  }, [startIndex, itemsPerPage, projects]);
+    return Math.min(startIndex + itemsPerPage, articles?.total || 0);
+  }, [startIndex, itemsPerPage, articles]);
+
 
   return {
-    projects,
+    articles,
     totalPages,
     currentPage,
     onPageChange,
@@ -56,10 +67,10 @@ const useListProjectViewModel = () => {
     onSearch,
     isValidating,
     onDelete,
+    onUpdateStatus,
     startIndex,
-    endIndex,
-  }
-
+    endIndex
+  };
 }
 
-export default useListProjectViewModel
+export default useListArticleViewModel

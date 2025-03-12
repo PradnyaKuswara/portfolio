@@ -1,11 +1,11 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import useSWR from 'swr';
 import { deleteProjectCategory, getAllProtected } from '../../../rest/ProjectCategory';
 
 const useListProjectCategoryViewModel = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [searchQuery, setSearchQuery] = React.useState('');
-  const itemsPerPage = 6;
+  const itemsPerPage = 10;
 
   const { data: projectCategories, isValidating, mutate } = useSWR(
     ['fetch-project-categories', currentPage, itemsPerPage, searchQuery],
@@ -39,6 +39,14 @@ const useListProjectCategoryViewModel = () => {
     }
   }
 
+  const startIndex = useMemo(() => {
+    return (currentPage - 1) * itemsPerPage;
+  }, [currentPage, itemsPerPage]);
+
+  const endIndex = useMemo(() => {
+    return Math.min(startIndex + itemsPerPage, projectCategories?.total || 0);
+  }, [itemsPerPage, startIndex, projectCategories]);
+
   return {
     projectCategories,
     totalPages,
@@ -47,7 +55,9 @@ const useListProjectCategoryViewModel = () => {
     refetch,
     onSearch,
     isValidating,
-    onDelete
+    onDelete,
+    startIndex,
+    endIndex
   };
 }
 

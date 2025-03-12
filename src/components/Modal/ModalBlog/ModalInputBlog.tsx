@@ -1,42 +1,34 @@
 import React, { useEffect } from 'react';
-import useModalInputProject from '../hooks/useModalInputProject';
+import useListArticleViewModel from '../../../pages/Dashboard/Blog/useListArticleViewModel';
 import useGlobalLoading from '../../../hooks/useGlobalLoading';
-import useModalInputProjectViewModel from './useModalInputProjectViewModel';
+import useModalInputBlog from '../hooks/useModalInputBlog';
+import useModalInputBlogVIewModel from './useModalInputBlogVIewModel';
 import toast from 'react-hot-toast';
-import useListProjectViewModel from '../../../pages/Dashboard/Project/useListProjectViewModel';
 import { Box, Grid, Modal, ModalClose, Sheet, Typography } from '@mui/joy';
-import TextInput from '../../FormInput/TextInput';
 import { Controller } from 'react-hook-form';
-import TextAreaInput from '../../FormInput/TextAreaInput';
+import TextInput from '../../FormInput/TextInput';
 import TextEditor from '../../TextEditor/TextEditor';
-import SelectProjectCategory from '../../FormInput/Select/SelectProjectCategory';
-import '@uploadcare/react-uploader/core.css';
 import UploadCare from '../../FormInput/FileUpload/UploadCare';
+import TextAreaInput from '../../FormInput/TextAreaInput';
+import '@uploadcare/react-uploader/core.css';
 
-const ModalInputProject: React.FC = () => {
-  const { modalState, closeModal } = useModalInputProject();
-  const { form, onSubmit, onEdit } = useModalInputProjectViewModel();
+const ModalInputBlog: React.FC = () => {
+  const { modalState, closeModal } = useModalInputBlog();
+  const { form, onSubmit, onEdit } = useModalInputBlogVIewModel();
   const [loading, setLoading] = useGlobalLoading();
-  const { refetch } = useListProjectViewModel();
+  const { refetch } = useListArticleViewModel();
 
   useEffect(() => {
     if (modalState.isEdit) {
       form.setValue('title', modalState.data?.title || '');
-    form.setValue('description', modalState.data?.description || '');
-      form.setValue('image', modalState.data?.image || '');
-      form.setValue(
-        'project_category_id',
-        modalState.data?.project_category_id?.toString() || ''
-      );
-      form.setValue('stack', modalState.data?.stack || '');
-      form.setValue('link_github', modalState.data?.link_github || '');
-      form.setValue('link_project', modalState.data?.link_project || '');
-      form.setValue(
-        'link_documentation',
-        modalState.data?.link_documentation || ''
-      );
+      form.setValue('content', modalState.data?.content || '');
+      form.setValue('thumbnail', modalState.data?.thumbnail || '');
       form.setValue('meta_desc', modalState.data?.meta_desc || '');
       form.setValue('meta_keyword', modalState.data?.meta_keyword || '');
+      form.setValue(
+        'tags',
+        modalState.data?.tags?.map((tag) => tag.name).join(', ') || ''
+      );
     }
   }, [modalState.data, modalState.isEdit, form]);
 
@@ -47,31 +39,19 @@ const ModalInputProject: React.FC = () => {
     if (loading) return;
 
     const isValid = await form.trigger();
-    if (!isValid) return toast.error('Please fill in the form correctly');
+    if (!isValid) return;
 
     setLoading(true);
 
-    const values = form.getValues();
+    const res = await onSubmit({ payload: form.getValues() });
 
-    const res = await onSubmit({
-      payload: {
-        ...values,
-        image: values.image,
-        link_github: values.link_github ?? '',
-        link_project: values.link_project ?? '',
-        link_documentation: values.link_documentation ?? '',
-        meta_keyword: values.meta_keyword ?? '',
-      },
-    });
     setLoading(false);
     if (res instanceof Error) {
       return toast.error(res.message);
     }
 
     refetch();
-    setLoading(false);
-    toast.success('Add project success');
-
+    toast.success('Add article success');
     closeModal();
   };
 
@@ -84,28 +64,16 @@ const ModalInputProject: React.FC = () => {
 
     setLoading(true);
 
-    const values = form.getValues();
+    const payload = { slugParam: modalState.data?.slug, ...form.getValues() };
 
-    const res = await onEdit({
-      payload: {
-        slugParam: modalState.data?.slug,
-        ...values,
-        image: values.image,
-        link_github: values.link_github ?? '',
-        link_project: values.link_project ?? '',
-        link_documentation: values.link_documentation ?? '',
-        meta_keyword: values.meta_keyword ?? '',
-      },
-    });
+    const res = await onEdit({ payload });
     setLoading(false);
     if (res instanceof Error) {
       return toast.error(res.message);
     }
 
     refetch();
-    setLoading(false);
-    toast.success('Edit project success');
-
+    toast.success('Edit article success');
     closeModal();
   };
 
@@ -141,12 +109,12 @@ const ModalInputProject: React.FC = () => {
           textColor="inherit"
           sx={{ fontWeight: 'lg', mb: 1 }}
         >
-          {modalState.isEdit ? 'Edit Project' : 'Add Project'}
+          {modalState.isEdit ? 'Edit Blog' : 'Add Blog'}
         </Typography>
         <Typography id="modal-desc" textColor="text.tertiary" sx={{ mb: 2 }}>
           {modalState.isEdit
-            ? 'Edit your project data'
-            : 'Fill in the form below to add a new project'}
+            ? 'Edit your Blog data'
+            : 'Fill in the form below to add a new Blog'}
         </Typography>
 
         <Box
@@ -158,13 +126,13 @@ const ModalInputProject: React.FC = () => {
             <Grid xs={12}>
               <Controller
                 control={form.control}
-                name="description"
+                name="content"
                 render={({ field, fieldState }) => (
                   <>
                     <TextEditor
                       field={field}
                       fieldState={fieldState}
-                      label="Description"
+                      label="Content"
                       isLabel
                     />
                   </>
@@ -174,12 +142,12 @@ const ModalInputProject: React.FC = () => {
             <Grid xs={12} sm={6}>
               <Controller
                 control={form.control}
-                name="image"
+                name="thumbnail"
                 render={({ field, fieldState }) => (
                   <UploadCare
                     onChange={field.onChange}
                     fieldState={fieldState}
-                    label="image"
+                    label="Thumbnail"
                     isLabel
                     value={field.value || null}
                   />
@@ -188,114 +156,40 @@ const ModalInputProject: React.FC = () => {
             </Grid>
             <Grid xs={12}>
               <Controller
-                control={form.control}
                 name="title"
+                control={form.control}
                 render={({ field, fieldState }) => (
                   <TextInput
                     props={{
                       field,
                       fieldState,
                       type: 'text',
-                      placeHolder: 'Input title project',
                       label: 'Title',
+                      placeHolder: 'Title',
                       isLabel: true,
                     }}
-                    sx={{ width: '100%' }}
                   />
                 )}
               />
             </Grid>
             <Grid xs={12}>
               <Controller
+                name="tags"
                 control={form.control}
-                name="project_category_id"
-                render={({ field, fieldState }) => (
-                  <SelectProjectCategory
-                    onChange={field.onChange}
-                    onBlur={field.onBlur}
-                    value={field.value}
-                    fieldState={fieldState}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid xs={12} sm={6}>
-              <Controller
-                control={form.control}
-                name="stack"
                 render={({ field, fieldState }) => (
                   <TextInput
                     props={{
                       field,
                       fieldState,
                       type: 'text',
-                      placeHolder: 'Input stack project',
-                      label: 'Stack',
+                      label: 'Tag',
+                      placeHolder: 'Input Tag Article',
                       isLabel: true,
                     }}
-                    sx={{ width: '100%' }}
                   />
                 )}
               />
             </Grid>
-            <Grid xs={12} sm={6}>
-              <Controller
-                control={form.control}
-                name="link_github"
-                render={({ field, fieldState }) => (
-                  <TextInput
-                    props={{
-                      field: { ...field, value: field.value || '' },
-                      fieldState,
-                      type: 'text',
-                      placeHolder: 'Input link github project',
-                      label: 'Link Github',
-                      isLabel: true,
-                    }}
-                    sx={{ width: '100%' }}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid xs={12} sm={6}>
-              <Controller
-                control={form.control}
-                name="link_project"
-                render={({ field, fieldState }) => (
-                  <TextInput
-                    props={{
-                      field: { ...field, value: field.value || '' },
-                      fieldState,
-                      type: 'text',
-                      placeHolder: 'Input link project',
-                      label: 'Link Project',
-                      isLabel: true,
-                    }}
-                    sx={{ width: '100%' }}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid xs={12} sm={6}>
-              <Controller
-                control={form.control}
-                name="link_documentation"
-                render={({ field, fieldState }) => (
-                  <TextInput
-                    props={{
-                      field: { ...field, value: field.value || '' },
-                      fieldState,
-                      type: 'text',
-                      placeHolder: 'Input link documentation project',
-                      label: 'Link Documentation',
-                      isLabel: true,
-                    }}
-                    sx={{ width: '100%' }}
-                  />
-                )}
-              />
-            </Grid>
-
             <Grid xs={12} sm={6}>
               <Controller
                 control={form.control}
@@ -340,4 +234,4 @@ const ModalInputProject: React.FC = () => {
   );
 };
 
-export default ModalInputProject;
+export default ModalInputBlog;

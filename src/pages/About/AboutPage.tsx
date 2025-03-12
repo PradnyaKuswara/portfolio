@@ -13,7 +13,7 @@ const AboutPage: React.FC = () => {
   return (
     <>
       <MetadataAboutPage />
-      <div className="min-h-screen py-36 lg:py-36 max-w-screen-lg lg:px-8 mx-4 lg:mx-auto">
+      <div className="min-h-screen py-28 lg:py-36 max-w-screen-lg lg:px-8 mx-4 lg:mx-auto">
         <DotPattern
           className={cn(
             '[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]'
@@ -29,10 +29,10 @@ const AboutPage: React.FC = () => {
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary via-secondary to-accent inline-block text-transparent bg-clip-text">
               {t('words.full-name-2')}
             </h1>
-            <p className="leading-relaxed lg:leading-7">
+            <p className="text-sm md:text-base leading-relaxed lg:leading-7">
               {t('about-page.section-about.description')}
             </p>
-            <p className="leading-relaxed lg:leading-7">
+            <p className="text-sm md:text-base leading-relaxed lg:leading-7">
               {t('about-page.section-about.description-2')}
             </p>
           </div>
@@ -95,7 +95,7 @@ const AboutPage: React.FC = () => {
             {t('about-page.section-contact.title')}
           </h1>
           <div className="flex flex-col gap-4 mt-4">
-            <p className="leading-relaxed">
+            <p className="text-base md:text-base leading-relaxed">
               {t('about-page.section-contact.description')}
             </p>
           </div>

@@ -20,7 +20,7 @@ function HomePage() {
           <h1 className="text-3xl lg:text-4xl night:text-red font-extrabold">
             {t('home-page.section-things.title')}
           </h1>
-          <p className="leading-7 lg:leading-7 max-w-xl text-sm">
+          <p className="leading-relaxed lg:leading-7 max-w-xl text-sm ">
             {t('home-page.section-things.description')}
           </p>
         </section>

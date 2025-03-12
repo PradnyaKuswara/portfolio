@@ -13,9 +13,9 @@ import { useTheme } from '../../hooks/useTheme';
 import Meteors from '../../components/UI/meteor';
 import BoxReveal from '../../components/UI/box-reveal';
 import { Link } from 'react-router-dom';
-import { Button } from '../../components/UI/moving-border';
 import Marquee from '../../components/UI/marquee';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@mui/joy';
 
 const HeroSection = () => {
   const { theme } = useTheme();
@@ -29,7 +29,7 @@ const HeroSection = () => {
         className={`${backgroundColor} relative w-full overflow-hidden rounded-md`}
       >
         <Meteors number={50} />
-        <div className="pt-36 lg:pt-48 max-w-screen-lg lg:px-8 mx-4 lg:mx-auto">
+        <div className="pt-28 pb-1 lg:pt-48 max-w-screen-lg lg:px-8 mx-4 lg:mx-auto">
           <div className="flex flex-col gap-4">
             <BoxReveal boxColor={'#5046e6'} duration={0.5}>
               <h1>{t('words.Hi')}</h1>
@@ -48,7 +48,7 @@ const HeroSection = () => {
             </BoxReveal>
 
             <BoxReveal boxColor={'#5046e6'} duration={0.5}>
-              <p className="lg:leading-7">
+              <p className="text-sm md:text-base leading-relaxed lg:leading-7">
                 {/* description */}
                 {t('home-page.hero-section.description')}
               </p>
@@ -57,21 +57,12 @@ const HeroSection = () => {
             <BoxReveal boxColor={'#5046e6'} duration={0.5}>
               <div className="flex gap-4">
                 <Link to="/projects" className="hover:scale-110 transition-all">
-                  <Button
-                    borderRadius="0.8rem"
-                    className="bg-transparent text-primary  dark:text-accent   "
-                    borderClassName="border-accent"
-                  >
+                  <Button className=" !bg-neutral !dark:text-accent   ">
                     {t('home-page.hero-section.cta.cta-1')}
                   </Button>
                 </Link>
                 <Link to="/about" className="hover:scale-110 transition-all">
-                  <Button
-                    borderRadius="0.8rem"
-                    className="bg-secondary border-none  dark:text-secondary-content "
-                    borderClassName="border-accent"
-                    duration={1}
-                  >
+                  <Button className="!bg-primary  !dark:text-secondary-content ">
                     {t('home-page.hero-section.cta.cta-2')}
                   </Button>
                 </Link>
@@ -117,7 +108,7 @@ const HeroSection = () => {
 
           <div className="flex justify-center items-center top-0 bottom-0">
             <div className="mt-10 lg:mt-28">
-              <Marquee pauseOnHover className="[--duration:20s]">
+              <Marquee pauseOnHover className="[--duration:20s]" >
                 <BoxReveal boxColor={'#5046e6'} duration={0.5}>
                   <Html5Original size="60" />
                 </BoxReveal>

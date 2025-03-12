@@ -13,7 +13,7 @@ const ProjectPage: React.FC = () => {
   return (
     <>
       <MetadataProjectPage />
-      <div className="min-h-screen py-36 lg:py-36 max-w-screen-xl lg:px-24 mx-4 lg:mx-auto">
+      <div className="min-h-screen py-28 lg:py-36 max-w-screen-xl lg:px-24 mx-4 lg:mx-auto">
         <h1
           className="text-4xl font-bold bg-gradient-to-r from-primary via-secondary to-accent inline-block text-transparent bg-clip-text "
           data-aos="fade-right"

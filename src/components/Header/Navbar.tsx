@@ -1,38 +1,38 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Moon, Sun } from 'react-feather';
 import { useTheme } from '../../hooks/useTheme';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import useLocalStorage from '../../hooks/useLocalStorage';
-import { KEY } from '../../shared/constants/constantStorage';
+// import useLocalStorage from '../../hooks/useLocalStorage';
+// import { KEY } from '../../shared/constants/constantStorage';
 import { ROUTE } from '../../shared/constants/constantRoute';
 
 const Navbar: React.FC = () => {
   const [scrollPosition, setScrollPosition] = React.useState<number>(0);
-  const [isDropdownOpen, setDropdownOpen] = React.useState(false);
+  // const [isDropdownOpen, setDropdownOpen] = React.useState(false);
   const [currentUrl, setCurrentUrl] = React.useState<string>('');
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
-  const { i18n, t } = useTranslation();
-  const storage = useLocalStorage();
-  const language = storage.getLocalStorage(KEY.localStorage.locale.name);
-  const dropdownLanguage = useRef<HTMLUListElement>(null);
+  const {  t } = useTranslation();
+  // const storage = useLocalStorage();
+  // const language = storage.getLocalStorage(KEY.localStorage.locale.name);
+  // const dropdownLanguage = useRef<HTMLUListElement>(null);
 
   const handleScroll = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
   };
 
-  const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
-    storage.setLocalStorage(KEY.localStorage.locale.name, lang);
-    setDropdownOpen(false);
-  };
+  // const changeLanguage = (lang: string) => {
+  //   i18n.changeLanguage(lang);
+  //   storage.setLocalStorage(KEY.localStorage.locale.name, lang);
+  //   setDropdownOpen(false);
+  // };
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!isDropdownOpen);
-  };
+  // const toggleDropdown = () => {
+  //   setDropdownOpen(!isDropdownOpen);
+  // };
 
   React.useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -45,22 +45,22 @@ const Navbar: React.FC = () => {
     setCurrentUrl(location.pathname);
   }, [location.pathname]);
 
-  React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownLanguage.current &&
-        !dropdownLanguage.current.contains(event.target as Node)
-      ) {
-        setDropdownOpen(false);
-      }
-    };
+  // React.useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent) => {
+  //     if (
+  //       dropdownLanguage.current &&
+  //       !dropdownLanguage.current.contains(event.target as Node)
+  //     ) {
+  //       setDropdownOpen(false);
+  //     }
+  //   };
 
-    document.addEventListener('mousedown', handleClickOutside);
+  //   document.addEventListener('mousedown', handleClickOutside);
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //   };
+  // }, []);
 
   return (
     <div
@@ -119,7 +119,7 @@ const Navbar: React.FC = () => {
 
       <div className="flex-col flex">
         <ul className="menu menu-horizontal">
-          <li>
+          {/* <li>
             <button
               className="btn btn-secondary btn-sm w-full flex items-center justify-between"
               type="button"
@@ -160,7 +160,7 @@ const Navbar: React.FC = () => {
                 </li>
               </ul>
             )}
-          </li>
+          </li> */}
           <li>
             <label className="swap swap-rotate">
               <input

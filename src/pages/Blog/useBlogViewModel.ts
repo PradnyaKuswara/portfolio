@@ -7,7 +7,7 @@ const useBlogViewModel = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const itemsPerPage = 6;
 
-  const { data: blogs, mutate } = useSWR(
+  const { data: blogs, mutate, isValidating } = useSWR(
     ['fetch-blogs', currentPage, itemsPerPage, searchQuery],
     ([, page, limit, search]) => getAll({ currentPage: page, itemsPerPage: limit, searchQuery: search })
   );
@@ -31,6 +31,7 @@ const useBlogViewModel = () => {
     onPageChange,
     onSearchChange,
     mutate,
+    isValidating
   }
 
 

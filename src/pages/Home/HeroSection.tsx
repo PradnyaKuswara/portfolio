@@ -72,7 +72,7 @@ const HeroSection = () => {
             <div className="flex flex-wrap gap-4 mt-2">
               <BoxReveal boxColor={'#5046e6'} duration={0.5}>
                 <Link
-                  to="https://drive.google.com/file/d/1wt_CXmcLNoT8sE2w1cX8xPtl-Sm6VVjX/view?usp=sharing"
+                  to="https://drive.google.com/file/d/1-uGWraL_O2OZHZgy_yChqU5g1pbMeb5A/view?usp=sharing"
                   className="hover:text-primary"
                 >
                   <div className="flex gap-2 items-center">
@@ -94,7 +94,7 @@ const HeroSection = () => {
               </BoxReveal>
               <BoxReveal boxColor={'#5046e6'} duration={0.5}>
                 <Link
-                  to="https://www.linkedin.com/in/pradnya-kuswara/"
+                  to="https://www.linkedin.com/in/pradnyakuswara/"
                   className="hover:text-primary"
                 >
                   <div className="flex gap-2 items-center">
@@ -108,7 +108,7 @@ const HeroSection = () => {
 
           <div className="flex justify-center items-center top-0 bottom-0">
             <div className="mt-10 lg:mt-28">
-              <Marquee pauseOnHover className="[--duration:20s]" >
+              <Marquee pauseOnHover className="[--duration:20s]">
                 <BoxReveal boxColor={'#5046e6'} duration={0.5}>
                   <Html5Original size="60" />
                 </BoxReveal>

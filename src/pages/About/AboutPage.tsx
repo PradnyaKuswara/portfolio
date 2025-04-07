@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { cn } from '../../libs/utils';
 import { DotPattern } from '../../components/UI/dot-pattern';
 import { useTranslation } from 'react-i18next';
 import useAboutViewModel from './useAboutViewModel';
 import { HoverEffectSertificate } from '../../components/UI/card-hover-effect-sertificate';
 import MetadataAboutPage from './MetadataAboutPage';
+import { useLoadingBar } from 'react-top-loading-bar';
 
 const AboutPage: React.FC = () => {
   const { t } = useTranslation();
-  const { certificates, totalPages, currentPage, onPageChange } =
+  const { certificates, totalPages, currentPage, onPageChange, isValidating } =
     useAboutViewModel();
+  const { start, complete } = useLoadingBar();
+
+  useEffect(() => {
+    if (isValidating) {
+      start();
+    } else {
+      complete();
+    }
+  }, [isValidating, start, complete]);
   return (
     <>
       <MetadataAboutPage />

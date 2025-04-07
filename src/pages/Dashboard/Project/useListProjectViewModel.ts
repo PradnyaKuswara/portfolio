@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import useSWR from 'swr';
-import { deleteProject, getAllProtected } from '../../../rest/ProjectRest';
+import { deleteProject, getAllProtected, updateStatusProject } from '../../../rest/ProjectRest';
 
 const useListProjectViewModel = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
@@ -39,6 +39,16 @@ const useListProjectViewModel = () => {
     }
   }
 
+  const onChangeStatus = async (slug: string) => {
+    try {
+      const response = await updateStatusProject(slug);
+      return response
+    }
+    catch (error) {
+      return error
+    }
+  }
+
   const startIndex = React.useMemo(() => {
     return (currentPage - 1) * itemsPerPage;
   }, [currentPage, itemsPerPage]);
@@ -58,6 +68,7 @@ const useListProjectViewModel = () => {
     onDelete,
     startIndex,
     endIndex,
+    onChangeStatus
   }
 
 }

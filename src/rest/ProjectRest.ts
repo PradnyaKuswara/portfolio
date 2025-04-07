@@ -104,3 +104,38 @@ export const deleteProject = async (slug: string) => {
 
   return await response.json();
 }
+
+export const updateStatusProject = async (slug: string) => {
+  const url = `${import.meta.env.VITE_API_URL}/projects/status/${slug}`;
+
+  const response = await fetch(url, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem(KEY.localStorage.auth.name)}`
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.text() || 'Failed to update project status');
+  }
+
+  return await response.json();
+}
+
+export const showProduct = async (slug?: string) => {
+  const url = `${import.meta.env.VITE_API_URL}/projects-front/${slug}`;
+
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.text() || 'Failed to fetch project');
+  }
+
+  return await response.json();
+}

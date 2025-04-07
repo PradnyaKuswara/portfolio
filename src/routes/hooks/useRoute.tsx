@@ -8,6 +8,7 @@ import BlogPage from '../../pages/Blog/BlogPage';
 import ProjectPage from '../../pages/Project/ProjectPage';
 import LoginPage from '../../pages/Auth/Login/LoginPage';
 import useRouteDashboard from './useRouteDashboard';
+import ProjectDetail from '../../pages/Project/Detail/ProjectDetail';
 
 interface Page {
   path: string;
@@ -23,6 +24,14 @@ export const useRoute = () => {
       { path: ROUTE.about.fullPath, component: AboutPage },
       { path: ROUTE.blog.fullPath, component: BlogPage },
       { path: ROUTE.project.fullPath, component: ProjectPage },
+      {
+        path: ROUTE.project.detail.getFullPath(':slug'),
+        component: ProjectDetail,
+      },
+      {
+        path: ROUTE.blog.detail.getFullPath(':slug'),
+        component: ProjectDetail,
+      }
     ];
 
     const children: RouteObject[] = pages.map(

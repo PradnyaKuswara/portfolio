@@ -124,3 +124,20 @@ export const updateStatusArticle = async (slugParam: string) => {
 
   return await response.json();
 }
+
+export const showArticle = async (slug?: string) => {
+  const url = `${import.meta.env.VITE_API_URL}/articles-front/${slug}`;
+
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.text() || 'Failed to fetch article');
+  }
+
+  return await response.json();
+}

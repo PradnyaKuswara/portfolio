@@ -6,17 +6,20 @@ interface ProjectTableProps {
   data: ProjectNamespace.Project[];
   editModal: (data: ProjectNamespace.Project) => void;
   handleDelete: (slug: string) => void;
+  handleChangeStatus: (slug: string) => void;
 }
 
 const ProjectTable: React.FC<ProjectTableProps> = ({
   data,
   editModal,
   handleDelete,
+  handleChangeStatus,
 }) => {
   return (
     <table className="table">
       <thead>
         <tr>
+          <th>Status</th>
           <th>No</th>
           <th>Title</th>
           <th>Category</th>
@@ -29,6 +32,25 @@ const ProjectTable: React.FC<ProjectTableProps> = ({
         {data && data.length > 0 ? (
           data.map((item, index) => (
             <tr key={item.id}>
+              {item.is_active ? (
+                <td>
+                  <button
+                    className="badge badge-success text-success-content rounded-sm"
+                    onClick={() => handleChangeStatus(item.slug)}
+                  >
+                    Active
+                  </button>
+                </td>
+              ) : (
+                <td>
+                  <button
+                    className="badge badge-error text-error-content rounded-sm"
+                    onClick={() => handleChangeStatus(item.slug)}
+                  >
+                    Inactive
+                  </button>
+                </td>
+              )}
               <td>{index + 1}</td>
               <td>{item.title}</td>
               <td>{item.ProjectCategory.name}</td>

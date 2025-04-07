@@ -18,6 +18,7 @@ const ProjectPage: React.FC = () => {
     startIndex,
     endIndex,
     onPageChange,
+    onChangeStatus,
   } = useListProjectViewModel();
 
   const { openModal, editModal } = useModalInputProject();
@@ -41,6 +42,23 @@ const ProjectPage: React.FC = () => {
 
     setLoading(false);
     toast.success('Delete project category success');
+    refetch();
+  };
+
+  const handleChangeStatus = async (slug: string) => {
+    if (loading) return;
+    setLoading(true);
+
+    const res = await onChangeStatus(slug);
+
+    if (res instanceof Error) {
+      setLoading(false);
+      toast.error(res.message);
+      return;
+    }
+
+    setLoading(false);
+    toast.success('Update project category success');
     refetch();
   };
 
@@ -92,6 +110,7 @@ const ProjectPage: React.FC = () => {
               data={projects?.data}
               editModal={editModal}
               handleDelete={handleDelete}
+              handleChangeStatus={handleChangeStatus}
             />
           </div>
           <div className="flex justify-between items-center mt-2">

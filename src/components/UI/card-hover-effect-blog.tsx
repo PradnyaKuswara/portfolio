@@ -60,7 +60,7 @@ export const HoverEffectBlog = ({
           <Card>
             <figure>
               <img
-                src={`${import.meta.env.Vite_PUBLIC_API_URL}/${item.thumbnail}`}
+                src={`${item.thumbnail}`}
                 alt=""
                 width={500}
                 height={500}

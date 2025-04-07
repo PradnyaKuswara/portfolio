@@ -16,12 +16,30 @@ export const ROUTE = {
     path: 'blog',
     fullPath: '/blogs/',
     name: 'Blog Page',
+    detail: {
+      locale: 'blog-page.detail',
+      path: 'detail',
+      fullPath: '/blogs/detail/',
+      getPath: (slug = ':slug') => `blogs/detail/${slug}`,
+      getFullPath: (slug = ':slug') => `/blogs/detail/${slug}`,
+      name: 'Blog Detail Page',
+      description: 'Blog detail page',
+    }
   },
   project: {
     locale: 'project-page',
     path: 'project',
     fullPath: '/projects/',
     name: 'Project Page',
+    detail: {
+      locale: 'project-page.detail',
+      path: 'detail',
+      fullPath: '/projects/detail/',
+      getPath: (slug = ':slug') => `projects/detail/${slug}`,
+      getFullPath: (slug = ':slug') => `/projects/detail/${slug}`,
+      name: 'Project Detail Page',
+      description: 'Project detail page',
+    }
   },
   login: {
     locale: 'login-page',

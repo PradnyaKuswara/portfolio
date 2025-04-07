@@ -6,7 +6,7 @@ const useAboutViewModel = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const itemsPerPage = 6;
 
-  const { data: certificates, mutate } = useSWR(
+  const { data: certificates, mutate, isValidating } = useSWR(
     ['fetch-certificates', currentPage, itemsPerPage],
     ([, page, limit]) => getAll({ currentPage: page, itemsPerPage: limit })
   );
@@ -23,6 +23,7 @@ const useAboutViewModel = () => {
     currentPage,
     onPageChange,
     mutate,
+    isValidating
   };
 };
 

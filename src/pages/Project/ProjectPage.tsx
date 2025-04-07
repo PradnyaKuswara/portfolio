@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useProjectViewModel from './useProjectViewModel';
 import { HoverEffectProject } from '../../components/UI/card-hover-effect-project';
 import MetadataProjectPage from './MetadataProjectPage';
 import { useTranslation } from 'react-i18next';
+import { useLoadingBar } from 'react-top-loading-bar';
 
 const ProjectPage: React.FC = () => {
-  const { projects, totalPages, currentPage, onPageChange } =
+  const { projects, totalPages, currentPage, onPageChange, isValidating } =
     useProjectViewModel();
+  const { start, complete } = useLoadingBar();
+
+  useEffect(() => {
+    if (isValidating) {
+      start();
+    } else {
+      complete();
+    }
+  }, [isValidating, start, complete]);
 
   const { t } = useTranslation();
 

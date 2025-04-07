@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useBlogViewModel from './useBlogViewModel';
 import { HoverEffectBlog } from '../../components/UI/card-hover-effect-blog';
 import MetadataBlogPage from './MetadataBlogPage';
 import { useTranslation } from 'react-i18next';
+import { useLoadingBar } from 'react-top-loading-bar';
 
 const BlogPage: React.FC = () => {
   const {
@@ -12,7 +13,18 @@ const BlogPage: React.FC = () => {
     searchQuery,
     onPageChange,
     onSearchChange,
+    isValidating,
   } = useBlogViewModel();
+
+  const { start, complete } = useLoadingBar();
+
+  useEffect(() => {
+    if (isValidating) {
+      start();
+    } else {
+      complete();
+    }
+  }, [isValidating, start, complete]);
 
   const { t } = useTranslation();
 

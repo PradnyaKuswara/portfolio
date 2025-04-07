@@ -7,6 +7,9 @@ import {
   PhpOriginal,
   TailwindcssOriginal,
   BootstrapOriginal,
+  PostgresqlOriginal,
+  TypescriptOriginal,
+  JavascriptOriginal,
 } from 'devicons-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
@@ -111,6 +114,12 @@ export const HoverEffectProject = ({
                       />
                     ) : stack.trim() == 'Bootstrap' ? (
                       <BootstrapOriginal size={20} className="text-blue-500" />
+                    ) : stack.trim() === 'PostgreSQL' ? (
+                      <PostgresqlOriginal size={20} />
+                    ) : stack.trim() === 'TypeScript' ? (
+                      <TypescriptOriginal size={20} />
+                    ) : stack.trim() === 'JavaScript' ? (
+                      <JavascriptOriginal size={20} />
                     ) : (
                       stack
                     )}
@@ -120,7 +129,7 @@ export const HoverEffectProject = ({
 
               <figure className="mt-3">
                 <img
-                  src={`${import.meta.env.VITE_PUBLIC_API_URL}/${item.image}`}
+                  src={`${item.image}`}
                   alt=""
                   width={400}
                   height={100}

@@ -6,7 +6,7 @@ const useProjectViewModel = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const itemsPerPage = 6;
 
-  const { data: projects, mutate } = useSWR(
+  const { data: projects, mutate, isValidating } = useSWR(
     ['fetch-projects', currentPage, itemsPerPage],
     ([, page, limit]) => getAll({ currentPage: page, itemsPerPage: limit })
   );
@@ -22,7 +22,8 @@ const useProjectViewModel = () => {
     totalPages,
     currentPage,
     onPageChange,
-    mutate
+    mutate,
+    isValidating
   }
 }
 

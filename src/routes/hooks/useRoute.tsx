@@ -9,6 +9,7 @@ import ProjectPage from '../../pages/Project/ProjectPage';
 import LoginPage from '../../pages/Auth/Login/LoginPage';
 import useRouteDashboard from './useRouteDashboard';
 import ProjectDetail from '../../pages/Project/Detail/ProjectDetail';
+import BlogDetail from '../../pages/Dashboard/Blog/Detail/BlogDetail';
 
 interface Page {
   path: string;
@@ -30,8 +31,8 @@ export const useRoute = () => {
       },
       {
         path: ROUTE.blog.detail.getFullPath(':slug'),
-        component: ProjectDetail,
-      }
+        component: BlogDetail,
+      },
     ];
 
     const children: RouteObject[] = pages.map(

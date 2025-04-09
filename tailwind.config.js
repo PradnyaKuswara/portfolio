@@ -55,6 +55,7 @@ export default {
   darkMode: ['class', '[data-theme="dark"]'],
   plugins: [
     daisyui,
+    require('@tailwindcss/typography'),
     function ({ matchUtilities, theme }) {
       matchUtilities(
         {

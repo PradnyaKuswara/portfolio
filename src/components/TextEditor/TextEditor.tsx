@@ -89,13 +89,13 @@ const TextEditor: React.FC<TextEditorProps> = ({
         </div>
       )}
       <MDXEditor
-        onChange={(markdown: string) =>
+        onChange={(markdown: string) => {
           field.onChange?.({
             target: { value: markdown },
-          } as React.ChangeEvent<HTMLInputElement>)
-        }
+          } as unknown as React.ChangeEvent<HTMLInputElement>);
+        }}
         markdown={(field.value as string) || 'Type here...'}
-        className="!z-[100000] !relative !border !rounded-[0.2rem] !border-gray-300 !shadow-sm !bg-white !text-sm !p-2 !w-full !h-[300px] !overflow-y-auto !resize-none"
+        className="!z-[100000] !relative !border !rounded-[0.2rem] !border-gray-300 !shadow-sm !bg-white !text-sm !p-2 !w-full !h-[300px] !overflow-y-auto !resize-none !prose !max-w-none"
         contentEditableClassName="custom-prose-styles"
         plugins={[
           codeBlockPlugin({ defaultCodeBlockLanguage: 'js' }),

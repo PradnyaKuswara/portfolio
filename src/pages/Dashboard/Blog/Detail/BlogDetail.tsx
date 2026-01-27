@@ -11,6 +11,8 @@ const BlogDetail: React.FC = () => {
   const { blog, isValidating } = useBlogDetailViewModel(slug);
   const { start, complete } = useLoadingBar();
 
+  console.log(blog);
+
   useEffect(() => {
     if (isValidating) {
       start();
@@ -36,7 +38,10 @@ const BlogDetail: React.FC = () => {
             <p className="leading-relaxed">{blog?.data?.meta_desc}</p>
             <CTABlog blog={blog?.data} />
             <img src={blog?.data?.thumbnail} alt={blog?.data?.title} />
-            <MDXRenderer code={blog?.data?.description}></MDXRenderer>
+            <MDXRenderer code={blog?.data?.content}></MDXRenderer>
+            {/* <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {blog?.data?.description}
+            </ReactMarkdown> */}
           </div>
         </div>
       ) : (

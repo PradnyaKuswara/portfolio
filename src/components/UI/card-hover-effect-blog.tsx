@@ -69,16 +69,28 @@ export const HoverEffectBlog = ({
             </figure>
             <div className="p-4">
               <div className="flex justify-end items-center">
-                <div className="flex gap-2">
-                  {item.tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="text-xs bg-primary text-primary-content  px-2 py-1 rounded-lg"
-                    >
-                      {tag.name}
-                    </span>
-                  ))}
+                <div className="flex justify-end">
+                  <div className="flex flex-wrap gap-2 max-w-full">
+                    {item.tags.map((tag, idx) => (
+                      <span
+                        key={idx}
+                        title={tag.name}
+                        className="
+          text-xs 
+          bg-primary 
+          text-primary-content 
+          px-2 py-1 
+          rounded-lg
+          max-w-[120px]
+          truncate
+        "
+                      >
+                        {tag.name}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+
               </div>
               <CardTitle>{item.title}</CardTitle>
               <CardDescription>

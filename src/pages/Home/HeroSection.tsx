@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 import Marquee from '../../components/UI/marquee';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@mui/joy';
+import RotatingText from '../../components/UI/RotatingText';
 
 const HeroSection = () => {
   const { theme } = useTheme();
@@ -44,7 +45,19 @@ const HeroSection = () => {
             </BoxReveal>
 
             <BoxReveal boxColor={'#5046e6'} duration={0.5}>
-              <p className="text-lg">Web Developer</p>
+              {/* <p className="text-lg">Web Developer</p> */}
+              <RotatingText
+                texts={['Software Developer', 'Software Engineer', 'Backend Developer', 'Web Application Developer']}
+                mainClassName="px-2 sm:px-2 md:px-3 bg-secondary text-secondary-content overflow-hidden py-0.5 sm:py-1 md:py-1 justify-center rounded-lg"
+                staggerFrom={"last"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
+              />
             </BoxReveal>
 
             <BoxReveal boxColor={'#5046e6'} duration={0.5}>

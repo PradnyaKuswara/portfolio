@@ -12,6 +12,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        figtree: ['Figtree', 'ui-sans-serif', 'system-ui'],
+        sans: ['Figtree', 'ui-sans-serif', 'system-ui'], // optional (global)
+      },
       animation: {
         marquee: 'marquee var(--duration) linear infinite',
         'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',

@@ -67,28 +67,21 @@ export const HoverEffectBlog = ({
                   />
                 </figure>
                 <div className="p-4">
-                  <div className="flex justify-end items-center">
-                    <div className="flex justify-end">
-                      <div className="flex flex-wrap gap-2 max-w-full">
-                        {item.tags.map((tag, idx) => (
-                          <span
-                            key={idx}
-                            title={tag.name}
-                            className="
-              text-xs 
-              bg-primary 
-              text-primary-content 
-              px-2 py-1 
-              rounded-lg
-              max-w-[120px]
-              truncate
-            "
-                          >
-                            {tag.name}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
+                  <div className="flex flex-wrap gap-1.5 items-center">
+                    {item.tags.slice(0, 3).map((tag, idx) => (
+                      <span
+                        key={idx}
+                        title={tag.name}
+                        className="text-[10px] bg-secondary/10 dark:bg-secondary/20 text-secondary border border-secondary/20 px-2 py-0.5 rounded-full max-w-[100px] truncate"
+                      >
+                        {tag.name}
+                      </span>
+                    ))}
+                    {item.tags.length > 3 && (
+                      <span className="text-[10px] bg-neutral-100 dark:bg-slate-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-slate-700 px-2 py-0.5 rounded-full font-medium">
+                        +{item.tags.length - 3}
+                      </span>
+                    )}
                   </div>
                   <CardTitle>{item.title}</CardTitle>
                   <CardDescription>

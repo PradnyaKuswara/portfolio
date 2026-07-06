@@ -29,12 +29,24 @@ const BlogDetail: React.FC = () => {
         <div className="min-h-screen py-28 lg:py-36 max-w-screen-lg lg:px-8 mx-4 lg:mx-auto">
           <div className="flex flex-col justify-center items-center gap-4">
             <h1
-              className="text-xl md:text-4xl font-bold mb-4"
+              className="text-xl md:text-4xl font-bold mb-2"
               data-aos="fade-right"
               data-aos-delay="100"
             >
               {blog?.data?.title}
             </h1>
+            {blog?.data?.tags && blog?.data?.tags.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 justify-center mb-4">
+                {blog?.data?.tags.map((tag: any, idx: number) => (
+                  <span
+                    key={idx}
+                    className="text-xs bg-secondary/10 dark:bg-secondary/20 text-secondary border border-secondary/20 px-2.5 py-1 rounded-full font-medium"
+                  >
+                    {tag.name}
+                  </span>
+                ))}
+              </div>
+            )}
             <p className="leading-relaxed">{blog?.data?.meta_desc}</p>
             <CTABlog blog={blog?.data} />
             <img src={blog?.data?.thumbnail} alt={blog?.data?.title} />

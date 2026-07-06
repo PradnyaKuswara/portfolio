@@ -211,7 +211,7 @@ export const HoverEffectProject = ({
                   {limitdesc(item.meta_desc)}
                 </p>
 
-                <div className="flex flex-wrap gap-1.5 mt-3">
+                <div className="flex flex-wrap gap-1.5">
                   {stackTech(item.stack).map((stack, idx) => {
                     const cleanStack = stack.trim();
                     const icon = getTechIcon(cleanStack);
@@ -229,7 +229,7 @@ export const HoverEffectProject = ({
               </CardDescription>
             </div>
 
-            <figure className="mt-3 overflow-hidden rounded-md bg-neutral-100 dark:bg-slate-900 aspect-video flex items-center justify-center">
+            <figure className="overflow-hidden rounded-md bg-neutral-100 dark:bg-slate-900 aspect-video flex items-center justify-center">
               <img
                 src={`${item.image}`}
                 alt={item.title}

@@ -188,52 +188,54 @@ export const HoverEffectProject = ({
             )}
           </AnimatePresence>
           <Card>
-            <div className="flex justify-between">
-              <div className="badge badge-secondary text-xs text-secondary-content">
-                {item.ProjectCategory.name}
+            <div className="flex flex-col gap-2">
+              <div className="flex justify-between">
+                <div className="badge badge-secondary text-xs text-secondary-content">
+                  {item.ProjectCategory.name}
+                </div>
+                <div className="flex gap-2">
+                  <div className="rounded-full bg-primary w-3 h-3"></div>
+                  <div className="rounded-full bg-primary w-3 h-3"></div>
+                  <div className="rounded-full bg-primary w-3 h-3"></div>
+                </div>
               </div>
-              <div className="flex gap-2">
-                <div className="rounded-full bg-primary w-3 h-3"></div>
-                <div className="rounded-full bg-primary w-3 h-3"></div>
-                <div className="rounded-full bg-primary w-3 h-3"></div>
-              </div>
+              <CardTitle>{item.title}</CardTitle>
+
+              <CardDescription>
+                <p
+                  className={cn(
+                    'mt-2 tracking-wide leading-normal text-sm',
+                    className
+                  )}
+                >
+                  {limitdesc(item.meta_desc)}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5 mt-3">
+                  {stackTech(item.stack).map((stack, idx) => {
+                    const cleanStack = stack.trim();
+                    const icon = getTechIcon(cleanStack);
+                    return (
+                      <div
+                        key={idx}
+                        className="flex items-center gap-1 px-2 py-0.5 rounded bg-neutral-100 dark:bg-slate-800 text-neutral-800 dark:text-neutral-200 text-xs border border-neutral-200 dark:border-slate-700"
+                      >
+                        {icon}
+                        <span>{cleanStack}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </CardDescription>
             </div>
-            <CardTitle>{item.title}</CardTitle>
 
-            <CardDescription>
-              <p
-                className={cn(
-                  'mt-2 tracking-wide leading-normal text-sm',
-                  className
-                )}
-              >
-                {limitdesc(item.meta_desc)}
-              </p>
-
-              <div className="flex flex-wrap gap-1.5 mt-3">
-                {stackTech(item.stack).map((stack, idx) => {
-                  const cleanStack = stack.trim();
-                  const icon = getTechIcon(cleanStack);
-                  return (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-1 px-2 py-0.5 rounded bg-neutral-100 dark:bg-slate-800 text-neutral-800 dark:text-neutral-200 text-xs border border-neutral-200 dark:border-slate-700"
-                    >
-                      {icon}
-                      <span>{cleanStack}</span>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <figure className="mt-3 overflow-hidden rounded-md bg-neutral-100 dark:bg-slate-900 aspect-video flex items-center justify-center">
-                <img
-                  src={`${item.image}`}
-                  alt={item.title}
-                  className="w-full h-full object-contain"
-                />
-              </figure>
-            </CardDescription>
+            <figure className="mt-3 overflow-hidden rounded-md bg-neutral-100 dark:bg-slate-900 aspect-video flex items-center justify-center">
+              <img
+                src={`${item.image}`}
+                alt={item.title}
+                className="w-full h-full object-contain"
+              />
+            </figure>
           </Card>
         </Link>
       ))}
@@ -255,8 +257,8 @@ export const Card = ({
         className
       )}
     >
-      <div className="relative z-50">
-        <div className="p-4">{children}</div>
+      <div className="relative z-50 h-full">
+        <div className="p-4 h-full flex flex-col justify-between gap-4">{children}</div>
       </div>
     </div>
   );

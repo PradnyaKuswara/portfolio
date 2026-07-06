@@ -57,84 +57,84 @@ export const HoverEffectBlog = ({
               />
             )}
           </AnimatePresence>
-          <Card>
-            <figure>
-              <img
-                src={`${item.thumbnail}`}
-                alt=""
-                width={500}
-                height={500}
-                className=""
-              />
-            </figure>
-            <div className="p-4">
-              <div className="flex justify-end items-center">
-                <div className="flex justify-end">
-                  <div className="flex flex-wrap gap-2 max-w-full">
-                    {item.tags.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        title={tag.name}
-                        className="
-          text-xs 
-          bg-primary 
-          text-primary-content 
-          px-2 py-1 
-          rounded-lg
-          max-w-[120px]
-          truncate
-        "
-                      >
-                        {tag.name}
-                      </span>
-                    ))}
+            <Card>
+              <div>
+                <figure className="overflow-hidden bg-neutral-100 dark:bg-slate-900 aspect-video flex items-center justify-center">
+                  <img
+                    src={`${item.thumbnail}`}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                </figure>
+                <div className="p-4">
+                  <div className="flex justify-end items-center">
+                    <div className="flex justify-end">
+                      <div className="flex flex-wrap gap-2 max-w-full">
+                        {item.tags.map((tag, idx) => (
+                          <span
+                            key={idx}
+                            title={tag.name}
+                            className="
+              text-xs 
+              bg-primary 
+              text-primary-content 
+              px-2 py-1 
+              rounded-lg
+              max-w-[120px]
+              truncate
+            "
+                          >
+                            {tag.name}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
+                  <CardTitle>{item.title}</CardTitle>
+                  <CardDescription>
+                    <p
+                      className={cn(
+                        'mt-2 tracking-wide leading-relaxed text-sm',
+                        className
+                      )}
+                    >
+                      {limitdesc(item.meta_desc)}
+                    </p>
+                  </CardDescription>
                 </div>
-
               </div>
-              <CardTitle>{item.title}</CardTitle>
-              <CardDescription>
-                <p
-                  className={cn(
-                    'mt-2 tracking-wide leading-relaxed text-sm',
-                    className
-                  )}
-                >
-                  {limitdesc(item.meta_desc)}
-                </p>
-                {/* published  */}
-                <p className="mt-4 text-xs text-neutral-500 dark:text-neutral-400">
+              <div className="p-4 pt-0">
+                <p className="text-xs text-neutral-500 dark:text-neutral-400">
                   Publish: {formatDate(item.createdAt.toString())}
                 </p>
-              </CardDescription>
-            </div>
-          </Card>
-        </Link>
-      ))}
-    </div>
-  );
-};
-
-export const Card = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) => {
-  return (
-    <div
-      className={cn(
-        'rounded-lg h-full w-full  overflow-hidden  border border-base-300 dark:border-gray-500  relative z-20 ',
-        className
-      )}
-    >
-      <div className="relative z-50">
-        <div className="">{children}</div>
+              </div>
+            </Card>
+          </Link>
+        ))}
       </div>
-    </div>
-  );
-};
+    );
+  };
+  
+  export const Card = ({
+    className,
+    children,
+  }: {
+    className?: string;
+    children: React.ReactNode;
+  }) => {
+    return (
+      <div
+        className={cn(
+          'rounded-lg h-full w-full  overflow-hidden  border border-base-300 dark:border-gray-500  relative z-20 ',
+          className
+        )}
+      >
+        <div className="relative z-50 h-full">
+          <div className="h-full flex flex-col justify-between">{children}</div>
+        </div>
+      </div>
+    );
+  };
 export const CardTitle = ({
   className,
   children,

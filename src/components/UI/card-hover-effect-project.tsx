@@ -10,12 +10,130 @@ import {
   PostgresqlOriginal,
   TypescriptOriginal,
   JavascriptOriginal,
+  VuejsOriginal,
+  AngularjsOriginal,
+  ExpressOriginal,
+  MongodbOriginal,
+  PythonOriginal,
+  GoOriginal,
+  DockerOriginal,
+  GitOriginal,
+  Css3Original,
+  Html5Original,
+  FirebaseOriginal,
+  SupabaseOriginal,
+  FlutterOriginal,
+  KotlinOriginal,
+  SwiftOriginal,
 } from 'devicons-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { cn } from '../../libs/utils';
 import { Link } from 'react-router-dom';
 import { Project } from '../../@types/project';
+import {
+  IconBrandOpenai,
+  IconSparkles,
+  IconBrain,
+} from '@tabler/icons-react';
+
+const getTechIcon = (name: string) => {
+  const cleanName = name.trim().toLowerCase();
+  switch (cleanName) {
+    case 'react':
+    case 'react.js':
+    case 'reactjs':
+      return <ReactOriginal size={16} />;
+    case 'next.js':
+    case 'nextjs':
+      return <NextjsOriginal size={16} />;
+    case 'laravel':
+      return <LaravelOriginal size={16} />;
+    case 'php':
+      return <PhpOriginal size={16} />;
+    case 'node.js':
+    case 'nodejs':
+    case 'node':
+      return <NodejsOriginal size={16} />;
+    case 'mysql':
+      return <MysqlOriginal size={16} />;
+    case 'tailwind':
+    case 'tailwindcss':
+    case 'tailwind css':
+      return <TailwindcssOriginal size={16} />;
+    case 'bootstrap':
+      return <BootstrapOriginal size={16} />;
+    case 'postgresql':
+    case 'postgres':
+      return <PostgresqlOriginal size={16} />;
+    case 'typescript':
+    case 'ts':
+      return <TypescriptOriginal size={16} />;
+    case 'javascript':
+    case 'js':
+      return <JavascriptOriginal size={16} />;
+    case 'vue':
+    case 'vue.js':
+    case 'vuejs':
+      return <VuejsOriginal size={16} />;
+    case 'angular':
+    case 'angularjs':
+      return <AngularjsOriginal size={16} />;
+    case 'express':
+    case 'expressjs':
+    case 'express.js':
+      return <ExpressOriginal size={16} />;
+    case 'mongodb':
+    case 'mongo':
+      return <MongodbOriginal size={16} />;
+    case 'python':
+      return <PythonOriginal size={16} />;
+    case 'go':
+    case 'golang':
+      return <GoOriginal size={16} />;
+    case 'docker':
+      return <DockerOriginal size={16} />;
+    case 'git':
+    case 'github':
+      return <GitOriginal size={16} />;
+    case 'css':
+    case 'css3':
+      return <Css3Original size={16} />;
+    case 'html':
+    case 'html5':
+      return <Html5Original size={16} />;
+    case 'firebase':
+      return <FirebaseOriginal size={16} />;
+    case 'supabase':
+      return <SupabaseOriginal size={16} />;
+    case 'flutter':
+      return <FlutterOriginal size={16} />;
+    case 'kotlin':
+      return <KotlinOriginal size={16} />;
+    case 'swift':
+      return <SwiftOriginal size={16} />;
+    case 'openai':
+    case 'gpt':
+    case 'chatgpt':
+    case 'gpt-3':
+    case 'gpt-4':
+      return <IconBrandOpenai size={16} className="text-emerald-600 dark:text-emerald-400" />;
+    case 'claude':
+    case 'anthropic':
+    case 'claude AI':
+      return <IconSparkles size={16} className="text-orange-500" />;
+    case 'gemini':
+    case 'google gemini':
+      return <IconSparkles size={16} className="text-blue-500" />;
+    case 'ai':
+    case 'artificial intelligence':
+    case 'llm':
+    case 'nlp':
+      return <IconBrain size={16} className="text-purple-500" />;
+    default:
+      return null;
+  }
+};
 
 export const HoverEffectProject = ({
   items,
@@ -92,48 +210,27 @@ export const HoverEffectProject = ({
                 {limitdesc(item.meta_desc)}
               </p>
 
-              <div className="flex justify-start gap-2 mt-2">
-                {stackTech(item.stack).map((stack, idx) => (
-                  <div key={idx}>
-                    {stack.trim() == 'React' ? (
-                      <ReactOriginal size={20} className="text-blue-500" />
-                    ) : stack.trim() == 'Next.js' ? (
-                      <NextjsOriginal size={20} className="text-red-500" />
-                    ) : stack.trim() == 'Laravel' ? (
-                      <LaravelOriginal size={20} className="text-red-500" />
-                    ) : stack.trim() == 'PHP' ? (
-                      <PhpOriginal size={20} className="text-blue-500" />
-                    ) : stack.trim() == 'Node.js' ? (
-                      <NodejsOriginal size={20} className="text-green-500" />
-                    ) : stack.trim() == 'MySQL' ? (
-                      <MysqlOriginal size={20} className="text-blue-500" />
-                    ) : stack.trim() == 'Tailwind' ? (
-                      <TailwindcssOriginal
-                        size={20}
-                        className="text-blue-500"
-                      />
-                    ) : stack.trim() == 'Bootstrap' ? (
-                      <BootstrapOriginal size={20} className="text-blue-500" />
-                    ) : stack.trim() === 'PostgreSQL' ? (
-                      <PostgresqlOriginal size={20} />
-                    ) : stack.trim() === 'TypeScript' ? (
-                      <TypescriptOriginal size={20} />
-                    ) : stack.trim() === 'JavaScript' ? (
-                      <JavascriptOriginal size={20} />
-                    ) : (
-                      stack
-                    )}
-                  </div>
-                ))}
+              <div className="flex flex-wrap gap-1.5 mt-3">
+                {stackTech(item.stack).map((stack, idx) => {
+                  const cleanStack = stack.trim();
+                  const icon = getTechIcon(cleanStack);
+                  return (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-1 px-2 py-0.5 rounded bg-neutral-100 dark:bg-slate-800 text-neutral-800 dark:text-neutral-200 text-xs border border-neutral-200 dark:border-slate-700"
+                    >
+                      {icon}
+                      <span>{cleanStack}</span>
+                    </div>
+                  );
+                })}
               </div>
 
-              <figure className="mt-3">
+              <figure className="mt-3 overflow-hidden rounded-md bg-neutral-100 dark:bg-slate-900 aspect-video flex items-center justify-center">
                 <img
                   src={`${item.image}`}
-                  alt=""
-                  width={400}
-                  height={100}
-                  className="aspect-video"
+                  alt={item.title}
+                  className="w-full h-full object-contain"
                 />
               </figure>
             </CardDescription>

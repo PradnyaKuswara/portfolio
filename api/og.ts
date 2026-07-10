@@ -96,7 +96,8 @@ export default async function handler(req: any, res: any) {
     html = replaceMeta(html, 'og:title', title, true);
     html = replaceMeta(html, 'og:description', description, true);
     html = replaceMeta(html, 'og:image', imageUrl, true);
-    html = replaceMeta(html, 'og:url', `${protocol}://${host}${req.url}`, true);
+    const originalPath = type === 'project' ? `/projects/detail/${slug}` : `/blogs/detail/${slug}`;
+    html = replaceMeta(html, 'og:url', `${protocol}://${host}${originalPath}`, true);
     
     html = replaceMeta(html, 'twitter:title', title, false);
     html = replaceMeta(html, 'twitter:description', description, false);

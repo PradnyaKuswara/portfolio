@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/project/:slug",
+      "destination": "/api/og?type=project&slug=:slug"
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/api/og?type=blog&slug=:slug"
+    },
+    {
       "source": "/(.*)",
       "destination": "/"
     }
